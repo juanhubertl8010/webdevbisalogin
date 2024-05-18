@@ -78,6 +78,10 @@ button{
 button:hover{
 	background: #333334;
 }
+.alert-danger{
+	color: white;
+	text-align : center;
+}
 </style>
 </head>
 <body>
@@ -88,6 +92,11 @@ button:hover{
 			<form action="{{ url('/forgotpass/success') }}" method="POST">
 			@csrf
 					<label for="chk" aria-hidden="true">Forgot Password</label>
+					@if(session('error'))
+    <div class="alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 					<input type="text" name="username" placeholder="Username" required="">
 					<input type="password" name="new_password" placeholder="Password" required="">
                     <input type="password" name="new_password_confirmation" placeholder="ConfirmPassword" required="">

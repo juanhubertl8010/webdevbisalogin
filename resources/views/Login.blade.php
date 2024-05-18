@@ -139,7 +139,9 @@
         .alert-success {
             color:white;
             text-align:center;
+            margin-top: 50px;
         }
+        
     </style>
 </head>
 <body>
