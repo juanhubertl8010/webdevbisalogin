@@ -85,12 +85,12 @@ button:hover{
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form>
+			<form action="{{ url('/forgotpass/success') }}" method="POST">
+			@csrf
 					<label for="chk" aria-hidden="true">Forgot Password</label>
-					<input type="text" name="txt" placeholder="Username" required="">
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
-                    <input type="password" name="pswd2" placeholder="ConfirmPassword" required="">
+					<input type="text" name="username" placeholder="Username" required="">
+					<input type="password" name="new_password" placeholder="Password" required="">
+                    <input type="password" name="new_password_confirmation" placeholder="ConfirmPassword" required="">
 					<button>Submit</button>
 				</form>
 			</div>
