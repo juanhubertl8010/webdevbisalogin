@@ -50,4 +50,34 @@ class AuthController extends Controller
         return redirect()->back()->withInput()->withErrors(['error' => 'Kombinasi username dan password tidak valid.']);
     }
     }
+
+    public function register(Request $request)
+    {
+        // Validate the input
+        $request->validate([
+            'username1' => 'required|string|max:100',
+            'email' => 'required|string|email|max:100|unique:users,email',
+            'password' => 'required',
+            'role' => 'required'
+        ]);
+    
+        // Find the latest user ID from the database
+        $latestUserID = User::max('ID_user');
+    
+        // Increment the latest user ID to generate a new ID
+        $newID = 'U' . str_pad((intval(substr($latestUserID, 1)) + 1), 4, '0', STR_PAD_LEFT);
+    
+        // Create the user
+        $user = User::create([
+            'ID_user' => $newID,
+            'user_role' => $request->role,
+            'username' => $request->username1,
+            'password' => Hash::make($request->password),
+            'email' => $request->email,
+            'sub_date' => now(),
+        ]);
+    
+        // Redirect to login with success message
+        return redirect()->route('login')->with('success', 'Registration successful!');
+    }
 }

@@ -52,10 +52,12 @@ Route::get('/adminhome', [AdminhomeController::class, 'show'])->name('adminhome'
 Route::get('/selleraddprod', [SellerAddProductController::class, 'show'])->name('selleraddprod');
 
 
-Route::middleware(['web'])->group(function () {
+
     Route::post('/usrlogin/login', [AuthController::class, 'login']);
     
-});
+
+
+Route::post('/usrlogin/register', [AuthController::class, 'register']);
 
 // Route::get('/usrlogin/login', function() {
 //     return 'This route only supports POST';

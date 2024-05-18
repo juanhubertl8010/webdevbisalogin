@@ -132,11 +132,14 @@
             margin-top: 20px;
         }
         .error-message {
-            font-size: 14px; /* Ukuran font dalam piksel */
+            font-size: 14px;
             color: red;
-            text-align : center;
-    ;
-}
+            text-align: center;
+        }
+        .alert-success {
+            color:white;
+            text-align:center;
+        }
     </style>
 </head>
 <body>
@@ -144,45 +147,51 @@
         <input type="checkbox" id="chk" aria-hidden="true">
 
         <div class="signup">
-            <form>
-                <label for="chk" aria-hidden="true">Sign up</label>
-                <input type="text" name="txt" placeholder="User name" required="">
-                <input type="email" name="email" placeholder="Email" required="">
-                <input type="password" name="pswd" placeholder="Password" required="">
-                <select name="role" id="role" style="width: 66%; height: 40px; background: #e0dede; justify-content: center; display: flex; margin: 10px auto; padding: 10px; border: none; outline: none; border-radius: 5px; margin-top: 10px;">
-                    <option value="Joki">Joki</option>
-                    <option value="User" selected>User</option>
-                    <option value="Admin">Admin</option>
-                </select>
-                <button type="button" onclick="showLink()">Sign up</button>
-            </form>
+        <form action="{{ url('/usrlogin/register') }}" method="POST">
+    {{ csrf_field() }}
+    <label for="chk" aria-hidden="true">Sign up</label>
+    @if (session('success'))
+    <div class="alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+    <input type="text" name="username1" placeholder="User name" required="">
+    <input type="email" name="email" placeholder="Email" required="">
+    <input type="password" name="password" placeholder="Password" required="">
+    <select name="role" id="role" style="width: 66%; height: 40px; background: #e0dede; justify-content: center; display: flex; margin: 10px auto; padding: 10px; border: none; outline: none; border-radius: 5px; margin-top: 10px;">
+        <option value="Joki">Joki</option>
+        <option value="User" selected>User</option>
+        <option value="Admin">Admin</option>
+    </select>
+    <button type="submit">Sign up</button>
+</form>
         </div>
 
         <div class="login">
-    <form action="{{ url('/usrlogin/login') }}" method="POST">
-        {{ csrf_field() }}
-        <label for="chk" aria-hidden="true">Login</label>
-        @if($errors->has('error'))
-    <div class="error-message">{{ $errors->first('error') }}</div>
-@endif
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="pswd" placeholder="Password" required>
-        <div class="forgot-password">
-            <a href="{{ route('forgotpass') }}">Forgot Password?</a>
+            <form action="{{ url('/usrlogin/login') }}" method="POST">
+                {{ csrf_field() }}
+                <label for="chk" aria-hidden="true">Login</label>
+                @if($errors->has('error'))
+                    <div class="error-message">{{ $errors->first('error') }}</div>
+                @endif
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="pswd" placeholder="Password" required>
+                <div class="forgot-password">
+                    <a href="{{ route('forgotpass') }}">Forgot Password?</a>
+                </div>
+                <div class="input-group">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember Me</label>
+                </div>
+                <button type="submit">Login</button>
+            </form>
         </div>
-        <div class="input-group">
-            <input type="checkbox" id="remember" name="remember">
-            <label for="remember">Remember Me</label>
-        </div>
-        <button type="submit">Login</button>
-    </form>
-</div>
+    </div>
 
     <script>
         function redirectToHomepage(event) {
             event.preventDefault();
-            
-            window.location.href = '{{ route('homepage') }}'; 
+            window.location.href = '{{ route('homepage') }}';
         }
     </script>
 </body>
