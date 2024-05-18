@@ -169,8 +169,6 @@
         <input type="password" name="pswd" placeholder="Password" required>
         <div class="forgot-password">
             <a href="{{ route('forgotpass') }}">Forgot Password?</a>
-            <br><a href="{{ route('adminhome') }}">Login Admin [Temp]</a>
-            <br><a href="{{ route('selleraddprod') }}">Login Seller [Temp]</a>
         </div>
         <div class="input-group">
             <input type="checkbox" id="remember" name="remember">

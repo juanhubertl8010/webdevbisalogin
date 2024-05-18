@@ -27,11 +27,22 @@ class AuthController extends Controller
 
         // Jika user ditemukan dan password cocok
         if ($user && Hash::check($request->pswd, $user->password)) {
-            // Login user
-            Auth::login($user, $request->remember);
-
-            // Redirect ke halaman yang diinginkan
-            return redirect('/homepage');
+            if ($user->user_role === 'Admin') {
+                // Login admin
+                Auth::login($user, $request->remember);
+                // Redirect ke halaman admin
+                return redirect('/adminhome');
+            }else if ($user->user_role === 'Joki') {
+                // Login joki
+                Auth::login($user, $request->remember);
+                // Redirect ke halaman joki
+                return redirect('/selleraddprod');
+            }else {
+                // Login user biasa
+                Auth::login($user, $request->remember);
+                // Redirect ke halaman home
+                return redirect('/homepage');
+            }
         }else{
 
         // Jika login gagal
