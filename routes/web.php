@@ -16,12 +16,15 @@ use App\Http\Controllers\AdmingameaddController;
 use App\Http\Controllers\AdminhomeController;
 use App\Http\Controllers\AdmintableController;
 use App\Http\Controllers\SellerAddProductController;
+use App\Http\Controllers\homepagejoki;
 
 Route::get('/', function () {
     return view('HomePage');
 });
 
 Route::get('/usrlogin', [AuthController::class, 'showLogin'])->name('login');
+
+Route::get('/homejoki', [homepagejoki::class, 'show'])->name('homejoki');
 
 Route::get('/faq', [FAQController::class, 'show'])->name('faq');
 

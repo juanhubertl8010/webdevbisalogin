@@ -36,7 +36,7 @@ class AuthController extends Controller
                 // Login joki
                 Auth::login($user, $request->remember);
                 // Redirect ke halaman joki
-                return redirect('/selleraddprod');
+                return redirect('/homejoki');
             }else {
                 // Login user biasa
                 Auth::login($user, $request->remember);
