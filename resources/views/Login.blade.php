@@ -163,7 +163,6 @@
     <select name="role" id="role" style="width: 66%; height: 40px; background: #e0dede; justify-content: center; display: flex; margin: 10px auto; padding: 10px; border: none; outline: none; border-radius: 5px; margin-top: 10px;">
         <option value="Joki">Joki</option>
         <option value="User" selected>User</option>
-        <option value="Admin">Admin</option>
     </select>
     <button type="submit">Sign up</button>
 </form>
