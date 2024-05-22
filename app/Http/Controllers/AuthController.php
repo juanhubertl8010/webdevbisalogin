@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Session;
 class AuthController extends Controller
 {
     public function showLogin()
@@ -24,31 +24,28 @@ class AuthController extends Controller
 
         // Coba untuk mendapatkan user berdasarkan username
         $user = User::where('username', $request->username)->first();
-
+        \Log::info('Attempted login with username: ' . $request->username);
+        if ($user) {
+            \Log::info('User found: ' . $user->username);
+        } else {
+            \Log::info('User not found with username: ' . $request->username);
+        }
         // Jika user ditemukan dan password cocok
         if ($user && Hash::check($request->pswd, $user->password)) {
+            Auth::login($user, $request->remember);
+            \Log::info('User logged in: ' . $user->username); // Tambahkan log
+            \Log::info('User details: ' . json_encode($user)); // Tambahkan log untuk data pengguna
+            Session::put('last_logged_in_username', $user->username);
             if ($user->user_role === 'Admin') {
-                // Login admin
-                Auth::login($user, $request->remember);
-                // Redirect ke halaman admin
                 return redirect('/adminhome');
-            }else if ($user->user_role === 'Joki') {
-                // Login joki
-                Auth::login($user, $request->remember);
-                // Redirect ke halaman joki
+            } else if ($user->user_role === 'Joki') {
                 return redirect('/homejoki');
-            }else {
-                // Login user biasa
-                Auth::login($user, $request->remember);
-                // Redirect ke halaman home
+            } else {
                 return redirect('/homepage');
             }
-        }else{
-
-        // Jika login gagal
-        // return redirect('/usrlogin')->withErrors('Username tidak valid');
-        return redirect()->back()->withInput()->withErrors(['error' => 'Kombinasi username dan password tidak valid.']);
-    }
+        } else {
+            return redirect()->back()->withInput()->withErrors(['error' => 'Kombinasi username dan password tidak valid.']);
+        }
     }
 
     public function register(Request $request)

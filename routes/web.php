@@ -58,8 +58,12 @@ Route::get('/selleraddprod', [SellerAddProductController::class, 'show'])->name(
 
     Route::post('/usrlogin/login', [AuthController::class, 'login']);
     
-
-
+    // web.php
+    Route::post('/logout', function () {
+        Auth::logout();
+        \Log::info('User logged out'); // Tambahkan log ini
+        return redirect('/usrlogin');
+    })->name('logout');
 Route::post('/usrlogin/register', [AuthController::class, 'register']);
 Route::post('/forgotpass/success', [ForgotPassController::class, 'resetPassword']);
 // Route::get('/usrlogin/login', function() {
