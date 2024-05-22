@@ -301,449 +301,40 @@
     <!-- Featured End -->
 
 
-    <!-- Categories Start -->
-    <div class="container-fluid pt-5">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Games</span></h2>
-        <div class="row px-xl-5 pb-3">
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/lol.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>League of Legends</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;" >
-                            <img class="img-fluid" src="img/ml.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Mobile Legends</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/valo.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Valorant</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cs.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Counter-strike: Global Offensive</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/overwatch.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Overwatch</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/pubg.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>PUBG (PlayerUnknown's Battlegrounds)</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/fortnite.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Fortnite</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cod.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Call of Duty: Warzone</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/gtav.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Grand Theft Auto V</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px; ">
-                            <img class="img-fluid" src="img/wow.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>World of Warcraft</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px; position: relative:">
-                            <img class="img-fluid" src="img/witcher3 2.avif" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>The Witcher 3: Wild Hunt</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/fifa.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>FIFA 22</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/amogus.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Among Us</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-4.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-3.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div> -->
-        </div>
+<!-- Categories Start -->
+<div class="container-fluid pt-5">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Games</span></h2>
+    
+    <div class="row px-xl-5 pb-3" id="games-container">
+        <!-- Game items will be dynamically inserted here by JavaScript -->
     </div>
-    <!-- Categories End -->
+
+    <div class="d-flex justify-content-center">
+        <nav>
+            <ul class="pagination" id="pagination-controls">
+                <!-- Pagination controls will be dynamically inserted here by JavaScript -->
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- Categories End -->
 
 
-    <!-- Products Start -->
-    <div class="container-fluid pt-5 pb-3">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured Products</span></h2>
-        <div class="row px-xl-5">
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/fifa 22 product.jfif" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">CS Pro Package</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>Rp 150000</h5>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 15px;" href="">100% game selesai.</a>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">Seller Name</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/mobile legend product 2.jfif" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Monster Slayer</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>Rp 125000</h5>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 15px;" href="">Hancurkan semua monster.</a>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">Seller Name</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/fortnite product.jfif" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Soccer Star</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>Rp 95000</h5>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 15px;" href="">Bawa timmu ke kemenangan <br>dalam FIFA.</a>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">Seller Name</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/mobile legend product 3.jfif" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Legend of the Rift</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>Rp 95000</h5>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 15px;" href="">Reach Challenger rank quickly</a>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">Seller Name</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/mobile legend product.jfif" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Joki sampai Mythic</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>Rp 80000</h5>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 15px;" href="">Winrate 100%</a>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">Seller Name</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/pubg mobile legend.jfif" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Joki sampai Ace</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>Rp 90000</h5>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 15px;" href="">KDA 9.00</a>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">Seller Name</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/pubg product.jfif" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Victory Royale</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>Rp 100000</h5>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 15px;" href="">Menang teruss</a>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">Seller Name</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/valorant product.jfif" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Impostor Master</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>Rp 110000</h5>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 15px;" href="">Impostor winrate 100%</a>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">Seller Name</a>
-                    </div>
-                </div>
-            </div>
+<!-- Products Start -->
+<div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured Products</span></h2>
+    <div class="row px-xl-5" id="productContainer">
+        <!-- Product items will be dynamically added here -->
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <nav aria-label="Product Pagination">
+                <ul class="pagination" id="pagination"></ul>
+            </nav>
         </div>
     </div>
-    <!-- Products End -->
+</div>
+<!-- Products End -->
 
 
     <!-- Offer Start -->
@@ -1122,6 +713,164 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script>
+        // Sample game data
+        const games = [
+            { name: 'League of Legends', image: 'img/lol.jpg' },
+            { name: 'Mobile Legends', image: 'img/ml.jpg' },
+            { name: 'Valorant', image: 'img/valo.jpg' },
+            { name: 'Counter-strike: Global Offensive', image: 'img/cs.jpg' },
+            { name: 'Overwatch', image: 'img/overwatch.jpg' },
+            { name: 'PUBG (PlayerUnknown\'s Battlegrounds)', image: 'img/pubg.jpg' },
+            { name: 'Fortnite', image: 'img/fortnite.jpg' },
+            { name: 'Call of Duty: Warzone', image: 'img/cod.jpg' },
+            { name: 'Grand Theft Auto V', image: 'img/gtav.jpg' },
+            { name: 'World of Warcraft', image: 'img/wow.jpg' },
+            { name: 'The Witcher 3: Wild Hunt', image: 'img/witcher3 2.avif' },
+            { name: 'FIFA 22', image: 'img/fifa.jpg' },
+            { name: 'Among Us', image: 'img/amogus.jpg' }
+        ];
+
+        const itemsPerPage = 8;
+        let currentPage = 1;
+
+        function renderGames(page) {
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const gamesToDisplay = games.slice(start, end);
+
+            const gamesContainer = document.getElementById('games-container');
+            gamesContainer.innerHTML = '';
+
+            gamesToDisplay.forEach(game => {
+                const gameElement = `
+                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                        <a class="text-decoration-none" href="">
+                            <div class="cat-item d-flex align-items-center mb-4">
+                                <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                                    <img class="img-fluid" src="${game.image}" alt="${game.name}" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="flex-fill pl-3">
+                                    <h6>${game.name}</h6>
+                                    <small class="text-body"></small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                `;
+                gamesContainer.innerHTML += gameElement;
+            });
+        }
+
+        function renderPagination() {
+            const pageCount = Math.ceil(games.length / itemsPerPage);
+            const paginationControls = document.getElementById('pagination-controls');
+            paginationControls.innerHTML = '';
+
+            for (let i = 1; i <= pageCount; i++) {
+                const pageItem = `
+                    <li class="page-item ${i === currentPage ? 'active' : ''}">
+                        <a class="page-link" href="#" onclick="changePage(event, ${i})">${i}</a>
+                    </li>
+                `;
+                paginationControls.innerHTML += pageItem;
+            }
+        }
+
+        function changePage(event, page) {
+            event.preventDefault();
+            currentPage = page;
+            renderGames(page);
+            renderPagination();
+        }
+
+        // Initial render
+        renderGames(currentPage);
+        renderPagination();
+    </script>
+
+<script>
+    // Sample product data
+    const products = [
+        { name: "CS Pro Package", price: 150000, image: "img/fifa 22 product.jfif", description: "100% game selesai." },
+        { name: "Monster Slayer", price: 125000, image: "img/mobile legend product 2.jfif", description: "Hancurkan semua monster." },
+        { name: "Soccer Star", price: 95000, image: "img/fortnite product.jfif", description: "Bawa timmu ke kemenangan <br>dalam FIFA." },
+        { name: "Legend of the Rift", price: 95000, image: "img/mobile legend product 3.jfif", description: "Reach Challenger rank quickly" },
+        { name: "Joki sampai Mythic", price: 80000, image: "img/mobile legend product.jfif", description: "Winrate 100%" },
+        { name: "Joki sampai Ace", price: 90000, image: "img/pubg mobile legend.jfif", description: "KDA 9.00" },
+        { name: "Victory Royale", price: 100000, image: "img/pubg product.jfif", description: "Menang teruss" },
+        { name: "Impostor Master", price: 110000, image: "img/valorant product.jfif", description: "Impostor winrate 100%" }
+    ];
+
+    // Function to display products based on page number
+    function displayProducts(pageNumber, pageSize) {
+        const startIndex = (pageNumber - 1) * pageSize;
+        const endIndex = Math.min(startIndex + pageSize, products.length);
+        const paginatedProducts = products.slice(startIndex, endIndex);
+
+        const productContainer = document.getElementById('productContainer');
+        productContainer.innerHTML = '';
+
+        paginatedProducts.forEach(product => {
+            const productHTML = `
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                    <div class="product-item bg-light mb-4">
+                        <div class="product-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="${product.image}" alt="${product.name}">
+                            <div class="product-action">
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center py-4">
+                            <a class="h6 text-decoration-none text-truncate" href="">${product.name}</a>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <h5>Rp ${product.price}</h5>
+                            </div>
+                            <a class="h6 text-decoration-none text-truncate" style="font-size: 15px;" href="">${product.description}</a>
+                            <div class="d-flex align-items-center justify-content-center mb-1">
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small>(99)</small>
+                            </div>
+                            <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">Seller Name</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            productContainer.innerHTML += productHTML;
+        });
+    }
+
+    // Pagination initialization
+    const pageSize = 4; // Number of products per page
+    const totalPages = Math.ceil(products.length / pageSize);
+
+    const pagination = document.getElementById('pagination');
+    for (let i = 1; i <= totalPages; i++) {
+        const pageItem = document.createElement('li');
+        pageItem.classList.add('page-item');
+        const pageLink = document.createElement('a');
+        pageLink.classList.add('page-link');
+        pageLink.href = '#';
+        pageLink.textContent = i;
+        pageLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            displayProducts(i, pageSize);
+        });
+        pageItem.appendChild(pageLink);
+        pagination.appendChild(pageItem);
+    }
+
+    // Display initial page
+    displayProducts(1, pageSize);
+</script>
 </body>
 
 </html>
