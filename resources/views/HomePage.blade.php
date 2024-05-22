@@ -746,7 +746,9 @@
             { name: 'World of Warcraft', image: 'img/wow.jpg' },
             { name: 'The Witcher 3: Wild Hunt', image: 'img/witcher3 2.avif' },
             { name: 'FIFA 22', image: 'img/fifa.jpg' },
-            { name: 'Among Us', image: 'img/amogus.jpg' }
+            { name: 'Among Us', image: 'img/amogus.jpg' },
+            { name: 'Minecraft', image: 'img/MCPE.jpg' },
+            { name: 'Animal Crossing', image: 'img/animalcrosing.jpg' }
         ];
 
         const itemsPerPage = 8;
