@@ -15,38 +15,56 @@ class AuthController extends Controller
     }
 
     public function login(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'username' => 'required',
-            'pswd' => 'required',
-        ]);
+{
+    // Validation
+    $request->validate([
+        'username' => 'required',
+        'pswd' => 'required',
+    ]);
 
-        // Coba untuk mendapatkan user berdasarkan username
-        $user = User::where('username', $request->username)->first();
-        \Log::info('Attempted login with username: ' . $request->username);
-        if ($user) {
-            \Log::info('User found: ' . $user->username);
-        } else {
-            \Log::info('User not found with username: ' . $request->username);
-        }
-        // Jika user ditemukan dan password cocok
-        if ($user && Hash::check($request->pswd, $user->password)) {
-            Auth::login($user, $request->remember);
-            \Log::info('User logged in: ' . $user->username); // Tambahkan log
-            \Log::info('User details: ' . json_encode($user)); // Tambahkan log untuk data pengguna
-            Session::put('last_logged_in_username', $user->username);
-            if ($user->user_role === 'Admin') {
-                return redirect('/adminhome');
-            } else if ($user->user_role === 'Joki') {
-                return redirect('/homejoki');
-            } else {
-                return redirect('/homepage');
-            }
-        } else {
-            return redirect()->back()->withInput()->withErrors(['error' => 'Kombinasi username dan password tidak valid.']);
-        }
+    // Attempt to retrieve the user based on the provided username
+    $user = User::where('username', $request->username)->first();
+
+    // Logging login attempt
+    \Log::info('Attempted login with username: ' . $request->username);
+    
+    if ($user) {
+        \Log::info('User found: ' . $user->username);
+    } else {
+        \Log::info('User not found with username: ' . $request->username);
     }
+
+    // If user found and password matches
+    if ($user && $this->checkPassword($request->pswd, $user->password)) {
+        // Authenticate user
+        Auth::login($user, $request->remember);
+        
+        // Logging user login
+        \Log::info('User logged in: ' . $user->username);
+        \Log::info('User details: ' . json_encode($user));
+
+        // Storing last logged-in username in session
+        Session::put('last_logged_in_username', $user->username);
+
+        // Redirecting based on user role
+        if ($user->user_role === 'Admin') {
+            return redirect('/adminhome');
+        } else if ($user->user_role === 'Joki') {
+            return redirect('/homejoki');
+        } else {
+            return redirect('/homepage');
+        }
+    } else {
+        // Handling invalid login attempt
+        return redirect()->back()->withInput()->withErrors(['error' => 'Kombinasi username dan password tidak valid.']);
+    }
+}
+
+private function checkPassword($inputPassword, $hashedPassword)
+{
+    // Check if input password matches hashed password using Bcrypt
+    return Hash::check($inputPassword, $hashedPassword);
+}
 
     public function register(Request $request)
     {

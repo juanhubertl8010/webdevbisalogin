@@ -17,7 +17,8 @@ use App\Http\Controllers\AdminhomeController;
 use App\Http\Controllers\AdmintableController;
 use App\Http\Controllers\SellerAddProductController;
 use App\Http\Controllers\homepagejoki;
-
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\CatalogController;
 Route::get('/', function () {
     return view('HomePage');
 });
@@ -66,6 +67,8 @@ Route::get('/selleraddprod', [SellerAddProductController::class, 'show'])->name(
     })->name('logout');
 Route::post('/usrlogin/register', [AuthController::class, 'register']);
 Route::post('/forgotpass/success', [ForgotPassController::class, 'resetPassword']);
+Route::get('/', [GameController::class, 'index']);
+//Route::get('/', [CatalogController::class, 'index']);
 // Route::get('/usrlogin/login', function() {
 //     return 'This route only supports POST';
 // });

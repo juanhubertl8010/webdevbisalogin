@@ -15,7 +15,7 @@ class UpdatePasswordSeeder extends Seeder
     public function run()
     {
         $users = DB::table('user')->get();
-
+    
         foreach ($users as $user) {
             DB::table('user')
                 ->where('ID_user', $user->ID_user)
