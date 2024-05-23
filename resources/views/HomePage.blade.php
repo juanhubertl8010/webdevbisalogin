@@ -29,6 +29,8 @@
     justify-content: flex-end;
 }
 
+
+
 .pagination .page-link {
     color: #333;
 }
@@ -344,95 +346,85 @@
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Games</span></h2>
     
     <div class="row px-xl-5 pb-3" id="games-container">
-        <!-- Game items will be dynamically inserted here by JavaScript -->
-       
-    @if($games->isEmpty())
-        <p>No games available</p>
-    @else
-        {{-- Game items --}}
-        <div class="row">
-            @foreach($games as $game)
-                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                    <a class="text-decoration-none" href="">
-                        <div class="cat-item d-flex align-items-center mb-4">
-                            <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                                <img class="img-fluid" src="{{ asset('img/' . $game->img) }}" alt="{{ $game->game_name }}" style="width: 100%; height: 100%; object-fit: cover;">
+        @if($games->isEmpty())
+            <p>No games available</p>
+        @else
+            <div class="row">
+                @foreach($games as $game)
+                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                        <a class="text-decoration-none" href="">
+                            <div class="cat-item d-flex align-items-center mb-4">
+                                <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                                    <img class="img-fluid" src="{{ asset('img/' . $game->img) }}" alt="{{ $game->game_name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="flex-fill pl-3">
+                                    <h6>{{ $game->game_name }}</h6>
+                                </div>
                             </div>
-                            <div class="flex-fill pl-3">
-                                <h6>{{ $game->game_name }}</h6>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="row justify-content-center" style="margin-left: 570px;">
+                <div class="col-auto">
+                    <div class="pagination" id="games-pagination">
+                        {{ $games->links() }}
+                    </div>
+                </div>
+            </div>
+        @endif
+    </div>
+
+    <!-- Products Start -->
+    <div class="container-fluid pt-5 pb-3" id="products-container">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Products</span></h2>
+        <div class="row">
+            @foreach ($products as $index => $product)
+                @if($index % 4 == 0 && $index != 0)
+                    </div><div class="row">
+                @endif
+                <div class="col-lg-3 col-md-3 col-sm-6 pb-1">
+                    <div class="product-item bg-light mb-4">
+                        <div class="product-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{{ asset('img/' . $product->imgproduct) }}" alt="{{ $product->product_name }}">
+                            <div class="product-action">
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
                             </div>
                         </div>
-                    </a>
+                        <div class="text-center py-4">
+                            <a class="h6 text-decoration-none text-truncate" href="">{{ $product->product_name }}</a>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <h5>Rp {{ $product->harga }}</h5>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center mb-1">
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small>(99)</small>
+                            </div>
+                            <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">{{ $product->seller_name }}</a>
+                        </div>
+                    </div>
                 </div>
             @endforeach
         </div>
 
-        {{-- Pagination --}}
         <div class="row justify-content-center">
-    <div class="col-auto">
-        <div class="pagination" id="games-pagination">
-            {{ $games->links() }}
-        </div>
-    </div>
-</div>
-    @endif
-</div>
-    <div class="d-flex justify-content-center">
-        <nav>
-            <ul class="pagination" id="pagination-controls">
-                <!-- Pagination controls will be dynamically inserted here by JavaScript -->
-            </ul>
-        </nav>
-    </div>
-
-    <!-- Products Start -->
-    <div class="container-fluid pt-5 pb-3">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Products</span></h2>
-    <div class="row">
-        @foreach ($products as $index => $product)
-            @if($index % 4 == 0 && $index != 0)
-                </div><div class="row">
-            @endif
-            <div class="col-lg-3 col-md-3 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="{{ asset('img/' . $product->imgproduct) }}" alt="{{ $product->product_name }}">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">{{ $product->product_name }}</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>Rp {{ $product->harga }}</h5>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">{{ $product->seller_name }}</a>
-                    </div>
+            <div class="col-auto">
+                <div class="pagination" id="products-pagination">
+                    {{ $products->links() }}
                 </div>
             </div>
-        @endforeach
-    </div>
-     <!-- Pagination for products -->
-     <div class="row justify-content-center">
-    <div class="col-auto">
-        <div class="pagination" id="products-pagination">
-            {{ $products->links() }}
         </div>
     </div>
 </div>
-</div>
-</div>
+
 
 <!-- {{-- Display pagination links --}}
 {{ $products->links() }} -->
@@ -942,6 +934,41 @@
     // Display initial page
     displayProducts(1, pageSize);
 </script> -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Intercept clicks on pagination links for games
+    $(document).on('click', '#games-pagination a', function(event) {
+        event.preventDefault();
+        fetchPage($(this).attr('href'), '#games-container');
+    });
+
+    // Intercept clicks on pagination links for products
+    $(document).on('click', '#products-pagination a', function(event) {
+        event.preventDefault();
+        fetchPage($(this).attr('href'), '#products-container');
+    });
+
+    // Function to fetch the content via AJAX
+    function fetchPage(url, container) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(response) {
+                $(container).html($(response).find(container).html());
+                $('html, body').animate({
+                    scrollTop: $(container).offset().top
+                }, 500); // Optional: Scroll to the updated content
+            },
+            error: function(xhr) {
+                console.log('Error:', xhr.status, xhr.statusText);
+            }
+        });
+    }
+});
+</script>
+
 </body>
 
 </html>
