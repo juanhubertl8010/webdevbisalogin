@@ -24,34 +24,6 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-<<<<<<< HEAD
-    
-       
-=======
-    <style>
-        .pagination {
-    justify-content: flex-end;
-}
-
-
-
-.pagination .page-link {
-    color: #333;
-}
-
-.pagination .page-item.active .page-link {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.pagination .page-link:focus,
-.pagination .page-link:hover {
-    background-color: #e9ecef;
-    color: #333;
-    border-color: #dee2e6;
-}
-    </style>
->>>>>>> bb4450c2cd709cfcf8bd8860276fdd4839acc52e
 </head>
 
 <body>
@@ -384,7 +356,7 @@
 
     <!-- Products Start -->
     <div class="container-fluid pt-5 pb-3" id="products-container">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Products</span></h2>
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Selected Products</span></h2>
         <div class="row">
             @foreach ($products as $index => $product)
                 @if($index % 4 == 0 && $index != 0)
@@ -421,13 +393,7 @@
             @endforeach
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <div class="pagination" id="products-pagination">
-                    {{ $products->links() }}
-                </div>
-            </div>
-        </div>
+    
     </div>
 </div>
 
