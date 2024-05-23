@@ -68,7 +68,7 @@ Route::get('/selleraddprod', [SellerAddProductController::class, 'show'])->name(
 Route::post('/usrlogin/register', [AuthController::class, 'register']);
 Route::post('/forgotpass/success', [ForgotPassController::class, 'resetPassword']);
 Route::get('/', [GameController::class, 'index']);
-//Route::get('/', [CatalogController::class, 'index']);
+Route::get('/', [CatalogController::class, 'index']);
 // Route::get('/usrlogin/login', function() {
 //     return 'This route only supports POST';
 // });
