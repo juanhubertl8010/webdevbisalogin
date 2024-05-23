@@ -24,27 +24,8 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <style>
-        .pagination {
-    justify-content: flex-end;
-}
-
-.pagination .page-link {
-    color: #333;
-}
-
-.pagination .page-item.active .page-link {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.pagination .page-link:focus,
-.pagination .page-link:hover {
-    background-color: #e9ecef;
-    color: #333;
-    border-color: #dee2e6;
-}
-    </style>
+    
+       
 </head>
 
 <body>
@@ -341,53 +322,46 @@
 
 <!-- Categories Start -->
 <div class="container-fluid pt-5">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Games</span></h2>
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+        <span class="bg-secondary pr-3">Games</span>
+    </h2>
     
     <div class="row px-xl-5 pb-3" id="games-container">
         <!-- Game items will be dynamically inserted here by JavaScript -->
        
-    @if($games->isEmpty())
-        <p>No games available</p>
-    @else
-        {{-- Game items --}}
-        <div class="row">
-            @foreach($games as $game)
-                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                    <a class="text-decoration-none" href="">
-                        <div class="cat-item d-flex align-items-center mb-4">
-                            <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                                <img class="img-fluid" src="{{ asset('img/' . $game->img) }}" alt="{{ $game->game_name }}" style="width: 100%; height: 100%; object-fit: cover;">
+        @if($games->isEmpty())
+            <p>No games available</p>
+        @else
+            {{-- Game items --}}
+            <div class="row">
+                @foreach($games as $game)
+                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                        <a class="text-decoration-none" href="">
+                            <div class="cat-item d-flex align-items-center mb-4">
+                                <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                                    <img class="img-fluid" src="{{ asset('img/' . $game->img) }}" alt="{{ $game->game_name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="flex-fill pl-3">
+                                    <h6>{{ $game->game_name }}</h6>
+                                </div>
                             </div>
-                            <div class="flex-fill pl-3">
-                                <h6>{{ $game->game_name }}</h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
 
-        {{-- Pagination --}}
-        <div class="row justify-content-center">
-    <div class="col-auto">
-        <div class="pagination" id="games-pagination">
-            {{ $games->links() }}
-        </div>
+            {{-- Pagination --}}
+            <div class="d-flex justify-content-end" style="margin-left: 570px;">
+                {{ $games->links() }}
+            </div>
+        @endif
     </div>
 </div>
-    @endif
-</div>
-    <div class="d-flex justify-content-center">
-        <nav>
-            <ul class="pagination" id="pagination-controls">
-                <!-- Pagination controls will be dynamically inserted here by JavaScript -->
-            </ul>
-        </nav>
-    </div>
+
 
     <!-- Products Start -->
     <div class="container-fluid pt-5 pb-3">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Products</span></h2>
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Selected Products</span></h2>
     <div class="row">
         @foreach ($products as $index => $product)
             @if($index % 4 == 0 && $index != 0)
@@ -424,13 +398,7 @@
         @endforeach
     </div>
      <!-- Pagination for products -->
-     <div class="row justify-content-center">
-    <div class="col-auto">
-        <div class="pagination" id="products-pagination">
-            {{ $products->links() }}
-        </div>
-    </div>
-</div>
+   
 </div>
 </div>
 
