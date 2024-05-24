@@ -115,49 +115,51 @@
                         <div class="nav-item dropdown dropright">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Moba <i class="fa fa-angle-right float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">League of Legends</a>
-                                <a href="" class="dropdown-item">Mobile Legends</a>
+                                <a href="{{ url('shop/G0004') }}" class="dropdown-item">League of Legends</a>
+                                <a href="{{ url('shop/G0001') }}" class="dropdown-item">Mobile Legends</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown dropright">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">First-Person-Shooter <i class="fa fa-angle-right float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">Valorant</a>
-                                <a href="" class="dropdown-item">Counter-Strike: Global Offensive</a>
-                                <a href="" class="dropdown-item">Overwatch</a>
+                                <a href="{{ url('shop/G0007') }}" class="dropdown-item">Valorant</a>
+                                <a href="{{ url('shop/G0013') }}" class="dropdown-item">Counter-Strike: Global Offensive</a>
+                                <a href="{{ url('shop/G0011') }}" class="dropdown-item">Overwatch</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown dropright">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Battle Royale <i class="fa fa-angle-right float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">PUBG (PlayerUnknown's Battlegrounds)</a>
-                                <a href="" class="dropdown-item">Fortnite</a>
-                                <a href="" class="dropdown-item">Call of Duty: Warzone</a>
-                                <a href="" class="dropdown-item">Grand Theft Auto V</a>
+                                <a href="{{ url('shop/G0002') }}" class="dropdown-item">PUBG (PlayerUnknown's Battlegrounds)</a>
+                                <a href="{{ url('shop/G0003') }}" class="dropdown-item">Fortnite</a>
+                                <a href="{{ url('shop/G0006') }}" class="dropdown-item">Call of Duty: Warzone</a>
+                                <a href="{{ url('shop/G0015') }}" class="dropdown-item">Grand Theft Auto V</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown dropright">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">MMORPG<i class="fa fa-angle-right float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">World of Warcraft</a>
+                                <a href="{{ url('shop/G0014') }}" class="dropdown-item">World of Warcraft</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown dropright">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">RPG (Role-Playing Game)<i class="fa fa-angle-right float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">The Witcher 3: Wild Hunt</a>
+                                <a href="{{ url('shop/G0010') }}" class="dropdown-item">The Witcher 3: Wild Hunt</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown dropright">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sports<i class="fa fa-angle-right float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">FIFA 22</a>
+                                <a href="{{ url('shop/G0009') }}" class="dropdown-item">FIFA 22</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown dropright">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Party Game<i class="fa fa-angle-right float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">Among Us</a>
+                                <a href="{{ url('shop/G0005') }}" class="dropdown-item">Among Us</a>
+                                <a href="{{ url('shop/G0008') }}" class="dropdown-item">Minecraft</a>
+                                <a href="{{ url('shop/G0012') }}" class="dropdown-item">Animal Crossing</a>
                             </div>
                         </div>
                     </div>
@@ -174,11 +176,11 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="{{ route('homepage') }}" class="nav-item nav-link active" style="color: #ffffff;">Home</a>
+                            <a href="{{ route('homepage') }}" class="nav-item nav-link active">Home</a>
                             <a href="{{ route('shop') }}" class="nav-item nav-link">Shop</a>
                             <a href="{{ route('detail') }}" class="nav-item nav-link">Shop Detail</a>
                             <a href="{{ route('cart') }}" class="nav-item nav-link">Shopping Cart</a>
-                            <a href="{{ route('wishlist') }}" class="nav-item nav-link" style="color: #ffc107;">Wishlist</a>
+                            <a href="{{ route('wishlist') }}" class="nav-item nav-link">Wishlist</a>
                             <a href="{{ route('checkout') }}" class="nav-item nav-link">Checkout</a>
                             <!-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
