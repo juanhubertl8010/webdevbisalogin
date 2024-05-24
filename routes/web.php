@@ -43,6 +43,9 @@ Route::get('/detail', [DetailController::class, 'show'])->name('detail');
 
 Route::get('/shop', [ShopController::class, 'show'])->name('shop');
 
+// Dynamic product route
+Route::get('/shop/{ID_game}', [ShopController::class, 'showCatalogByGame'])->name('shop.byGame');
+
 Route::get('/wishlist', [WishlistController::class, 'show'])->name('wishlist');
 
 Route::get('/forgotpass', [ForgotPassController::class, 'show'])->name('forgotpass');
