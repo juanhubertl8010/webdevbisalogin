@@ -324,35 +324,35 @@
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Games</span></h2>
     
     <div class="row px-xl-5 pb-3" id="games-container">
-        @if($games->isEmpty())
-            <p>No games available</p>
-        @else
-            <div class="row">
-                @foreach($games as $game)
-                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                        <a class="text-decoration-none" href="">
-                            <div class="cat-item d-flex align-items-center mb-4">
-                                <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                                    <img class="img-fluid" src="{{ asset('img/' . $game->img) }}" alt="{{ $game->game_name }}" style="width: 100%; height: 100%; object-fit: cover;">
-                                </div>
-                                <div class="flex-fill pl-3">
-                                    <h6>{{ $game->game_name }}</h6>
-                                </div>
+    @if($games->isEmpty())
+        <p>No games available</p>
+    @else
+        <div class="row">
+            @foreach($games as $game)
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                    <a class="text-decoration-none" href="{{ route('shop.byGame', $game->ID_game) }}">
+                        <div class="cat-item d-flex align-items-center mb-4">
+                            <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                                <img class="img-fluid" src="{{ asset('img/' . $game->img) }}" alt="{{ $game->game_name }}" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
+                            <div class="flex-fill pl-3">
+                                <h6>{{ $game->game_name }}</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        </div>
 
-            <div class="row justify-content-center" style="margin-left: 600px;">
-                <div class="col-auto">
-                    <div class="pagination" id="games-pagination">
-                        {{ $games->links() }}
-                    </div>
+        <div class="row justify-content-center" style="margin-left: 600px;">
+            <div class="col-auto">
+                <div class="pagination" id="games-pagination">
+                    {{ $games->links() }}
                 </div>
             </div>
-        @endif
-    </div>
+        </div>
+    @endif
+</div>
 
     <!-- Products Start -->
     <div class="container-fluid pt-5 pb-3" id="products-container">
