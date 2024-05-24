@@ -579,7 +579,6 @@
                         <div class="d-flex align-items-center justify-content-center mt-2">
                             <h5>Rp {{ number_format($item->harga, 0, ',', '.') }}</h5>
                         </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 15px;" href="">{{ $item->description }}</a>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
                             <small class="fa fa-star text-primary mr-1"></small>
