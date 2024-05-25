@@ -9,10 +9,8 @@ class Catalog extends Model
 {
     use HasFactory;
 
-    protected $table = 'catalog'; // sesuaikan dengan nama tabel Anda
-
-    protected $primaryKey = 'ID_catalog'; // sesuaikan dengan primary key tabel Anda
-
+    protected $table = 'catalog';
+    protected $primaryKey = 'ID_catalog';
     protected $fillable = [
         'ID_game',
         'ID_user',
@@ -22,6 +20,11 @@ class Catalog extends Model
         'imgproduct',
     ];
 
-    // Jika Anda tidak menggunakan kolom timestamps (created_at dan updated_at), Anda bisa menonaktifkannya
-    public $timestamps = true; // atau false tergantung dari tabel Anda
+    public $timestamps = true;
+
+    // Define the relationship to the User model
+    public function seller()
+    {
+        return $this->belongsTo(User::class, 'ID_user', 'ID_user');
+    }
 }

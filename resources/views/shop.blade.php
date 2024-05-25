@@ -562,7 +562,7 @@
                             </div>
                         </div>
                     </div> -->
-    <div class="container">
+                    <div class="container">
     <div class="row">
         @foreach($catalogItems as $item)
             <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
@@ -581,14 +581,9 @@
                         <div class="d-flex align-items-center justify-content-center mt-2">
                             <h5>Rp {{ number_format($item->harga, 0, ',', '.') }}</h5>
                         </div>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>(99)</small>
-                        </div>
+                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">
+                            {{ $item->seller ? $item->seller->username : 'Unknown Seller' }}
+                        </a>
                     </div>
                 </div>
             </div>

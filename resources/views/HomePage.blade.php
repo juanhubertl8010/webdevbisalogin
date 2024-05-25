@@ -358,47 +358,37 @@
 
     <!-- Products Start -->
     <div class="container-fluid pt-5 pb-3" id="products-container">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Selected Products</span></h2>
-        <div class="row">
-            @foreach ($products as $index => $product)
-                @if($index % 4 == 0 && $index != 0)
-                    </div><div class="row">
-                @endif
-                <div class="col-lg-3 col-md-3 col-sm-6 pb-1">
-                    <div class="product-item bg-light mb-4">
-                        <div class="product-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ asset('img/' . $product->imgproduct) }}" alt="{{ $product->product_name }}">
-                            <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="">{{ $product->product_name }}</a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5>Rp {{ $product->harga }}</h5>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-center mb-1">
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
-                            </div>
-                            <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">{{ $product->seller_name }}</a>
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Selected Products</span></h2>
+    <div class="row">
+        @foreach ($products as $index => $product)
+            @if($index % 4 == 0 && $index != 0)
+                </div><div class="row">
+            @endif
+            <div class="col-lg-3 col-md-3 col-sm-6 pb-1">
+                <div class="product-item bg-light mb-4">
+                    <div class="product-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{{ asset('img/' . $product->imgproduct) }}" alt="{{ $product->product_name }}">
+                        <div class="product-action">
+                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
                         </div>
                     </div>
+                    <div class="text-center py-4">
+                        <a class="h6 text-decoration-none text-truncate" href="">{{ $product->product_name }}</a>
+                        <div class="d-flex align-items-center justify-content-center mt-2">
+                            <h5>Rp {{ $product->harga }}</h5>
+                        </div>
+                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">
+                            {{ $product->seller ? $product->seller->username : 'Unknown Seller' }}
+                        </a>
+                    </div>
                 </div>
-            @endforeach
-        </div>
-
-    
+            </div>
+        @endforeach
     </div>
 </div>
-
 
 
 <!-- {{-- Display pagination links --}}

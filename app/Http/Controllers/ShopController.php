@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Catalog;
 use App\Models\Game; // Correctly import the Game model
+use App\Models\User;
 class ShopController extends Controller
 {
     // public function show()
@@ -25,32 +26,29 @@ class ShopController extends Controller
 
     public function show()
     {
-        $catalogItems = Catalog::simplePaginate(9);
+        // Fetch catalog items with seller information
+        $catalogItems = Catalog::with('seller')->simplePaginate(9);
 
-        // Pass the catalog items to the view
         return view('shop', [
             'catalogItems' => $catalogItems,
-            'isGeneralView' => true, // Flag to indicate general shop view
+            'isGeneralView' => true,
             'game' => null
         ]);
     }
 
     public function showCatalogByGame($ID_game)
     {
-        // Get catalog items based on the ID_game
-        $catalogItems = Catalog::where('ID_game', $ID_game)->simplePaginate(9);
+        // Fetch catalog items based on ID_game with seller information
+        $catalogItems = Catalog::where('ID_game', $ID_game)->with('seller')->simplePaginate(9);
 
-        // Fetch the game details (assuming you have a Game model)
         $game = Game::find($ID_game);
-        
         if (!$game) {
-            abort(404); // Handle game not found
+            abort(404);
         }
 
-        // Pass the catalog items to the view
         return view('shop', [
             'catalogItems' => $catalogItems,
-            'isGeneralView' => false, // Flag to indicate specific product view
+            'isGeneralView' => false,
             'game' => $game
         ]);
     }
