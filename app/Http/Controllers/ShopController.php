@@ -40,7 +40,8 @@ class ShopController extends Controller
     public function showCatalogByGame($ID_game)
     {
         // Fetch catalog items based on ID_game with seller information
-        $catalogItems = Catalog::where('ID_game', $ID_game)->with('seller')->simplePaginate(9);
+        // $catalogItems = Catalog::where('ID_game', $ID_game)->with('seller')->simplePaginate(9);
+        $catalogItems = Catalog::where('ID_game', $ID_game)->simplePaginate(9);
         // $catalogItems = Catalog::simplePaginate(8, ['*'], 'products_page', $productsPage);
         $game = Game::find($ID_game);
         if (!$game) {
