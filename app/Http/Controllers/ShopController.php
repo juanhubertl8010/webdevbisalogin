@@ -56,4 +56,19 @@ class ShopController extends Controller
             'game' => $game
         ]);
     }
+    public function index(Request $request)
+{
+    $search = $request->query('search');
+    if ($search) {
+        $catalogItems = Catalog::where('product_name', 'LIKE', "%{$search}%")
+                               ->orWhere('description', 'LIKE', "%{$search}%")
+                               ->simplePaginate(9);
+    } else {
+        $catalogItems = Catalog::simplePaginate(9);
+    }
+
+    return view('shop', [
+        'catalogItems' => $catalogItems
+    ]);
+}
 }

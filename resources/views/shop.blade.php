@@ -82,17 +82,17 @@
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                </form>
+    <form action="{{ route('shop') }}" method="GET">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search for products">
+            <div class="input-group-append">
+                <button type="submit" class="input-group-text bg-transparent text-primary">
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
+        </div>
+    </form>
+</div>
             <div class="col-lg-4 col-6 text-right">
                 <p class="m-0">Customer Service</p>
                 <h5 class="m-0">+62 8123773546</h5>
@@ -562,7 +562,7 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="container">
+              <div class="container">
     <div class="row">
         @foreach($catalogItems as $item)
             <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
@@ -598,14 +598,13 @@
                     </div>
                 </div>
             </div>
-            
         @endforeach
     </div>
 
     <div class="col-12">
         <nav>
             <ul class="pagination justify-content-center">
-                {{ $catalogItems->links() }}
+                {{ $catalogItems->appends(['search' => request()->query('search')])->links() }}
             </ul>
         </nav>
     </div>

@@ -99,17 +99,17 @@
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                </form>
+    <form action="{{ route('shop') }}" method="GET">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search for products">
+            <div class="input-group-append">
+                <button type="submit" class="input-group-text bg-transparent text-primary">
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
+        </div>
+    </form>
+</div>
             <div class="col-lg-4 col-6 text-right">
                 <p class="m-0">Customer Service</p>
                 <h5 class="m-0">+62 8123773546</h5>
