@@ -21,4 +21,14 @@ class Catalog extends Model
     {
         return $this->belongsTo(User::class, 'ID_user', 'ID_user');
     }
+
+    // public function game()
+    // {
+    //     return $this->belongsTo(Game::class, 'ID_game');
+    // }
+
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class, 'ID_user');
+    // }
 }

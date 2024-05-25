@@ -356,6 +356,7 @@
     @endif
 </div>
 
+
     <!-- Products Start -->
     <div class="container-fluid pt-5 pb-3" id="products-container">
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
@@ -398,6 +399,7 @@
                     </div>
                 </div>
             </div>
+
         @endforeach
     </div>
 </div>

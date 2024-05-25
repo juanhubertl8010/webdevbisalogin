@@ -27,10 +27,8 @@ class ShopController extends Controller
     public function show()
     {
         // Fetch catalog items with seller information
-        $catalogItems = Catalog::with('seller')->simplePaginate(9);
-
-        // Debug the data
-       
+        // $catalogItems = Catalog::with('seller')->simplePaginate(9);
+        $catalogItems = Catalog::simplePaginate(9);
 
         return view('shop', [
             'catalogItems' => $catalogItems,
@@ -43,7 +41,7 @@ class ShopController extends Controller
     {
         // Fetch catalog items based on ID_game with seller information
         $catalogItems = Catalog::where('ID_game', $ID_game)->with('seller')->simplePaginate(9);
-
+        // $catalogItems = Catalog::simplePaginate(8, ['*'], 'products_page', $productsPage);
         $game = Game::find($ID_game);
         if (!$game) {
             abort(404);
