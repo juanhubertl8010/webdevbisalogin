@@ -358,7 +358,9 @@
 
     <!-- Products Start -->
     <div class="container-fluid pt-5 pb-3" id="products-container">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Selected Products</span></h2>
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+        <span class="bg-secondary pr-3">Selected Products</span>
+    </h2>
     <div class="row">
         @foreach ($products as $index => $product)
             @if($index % 4 == 0 && $index != 0)
@@ -369,14 +371,24 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src="{{ asset('img/' . $product->imgproduct) }}" alt="{{ $product->product_name }}">
                         <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href="">
+                                <i class="fa fa-shopping-cart"></i>
+                            </a>
+                            <a class="btn btn-outline-dark btn-square" href="">
+                                <i class="far fa-heart"></i>
+                            </a>
+                            <a class="btn btn-outline-dark btn-square" href="">
+                                <i class="fa fa-sync-alt"></i>
+                            </a>
+                            <a class="btn btn-outline-dark btn-square" href="">
+                                <i class="fa fa-search"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">{{ $product->product_name }}</a>
+                        <a class="h6 text-decoration-none text-truncate" href="">
+                            {{ $product->product_name }}
+                        </a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
                             <h5>Rp {{ $product->harga }}</h5>
                         </div>
@@ -389,8 +401,6 @@
         @endforeach
     </div>
 </div>
-
-
 <!-- {{-- Display pagination links --}}
 {{ $products->links() }} -->
         <!-- <div class="row px-xl-5">

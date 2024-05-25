@@ -570,16 +570,27 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src="{{ asset('img/' . $item->imgproduct) }}" alt="{{ $item->product_name }}">
                         <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href="">
+                                <i class="fa fa-shopping-cart"></i>
+                            </a>
+                            <a class="btn btn-outline-dark btn-square" href="">
+                                <i class="far fa-heart"></i>
+                            </a>
+                            <a class="btn btn-outline-dark btn-square" href="">
+                                <i class="fa fa-sync-alt"></i>
+                            </a>
+                            <a class="btn btn-outline-dark btn-square" href="">
+                                <i class="fa fa-search"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">{{ $item->product_name }}</a>
+                        <a class="h6 text-decoration-none text-truncate" href="">
+                            {{ $item->product_name }}
+                        </a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>Rp {{ number_format($item->harga, 0, ',', '.') }}</h5>
+                            <h5>Rp {{ number_format($item->harga, 0, ',', '.') }}
+                            </h5>
                         </div>
                         <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">
                             {{ $item->seller ? $item->seller->username : 'Unknown Seller' }}
@@ -590,12 +601,11 @@
         @endforeach
     </div>
 
-    <!-- Pagination -->
     <div class="col-12">
         <nav>
-          <ul class="pagination justify-content-center">
-            {{ $catalogItems->links() }}
-          </ul>
+            <ul class="pagination justify-content-center">
+                {{ $catalogItems->links() }}
+            </ul>
         </nav>
     </div>
 </div>

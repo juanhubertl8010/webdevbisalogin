@@ -29,6 +29,9 @@ class ShopController extends Controller
         // Fetch catalog items with seller information
         $catalogItems = Catalog::with('seller')->simplePaginate(9);
 
+        // Debug the data
+       
+
         return view('shop', [
             'catalogItems' => $catalogItems,
             'isGeneralView' => true,
@@ -45,6 +48,8 @@ class ShopController extends Controller
         if (!$game) {
             abort(404);
         }
+
+     
 
         return view('shop', [
             'catalogItems' => $catalogItems,

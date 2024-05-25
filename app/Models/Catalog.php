@@ -12,17 +12,11 @@ class Catalog extends Model
     protected $table = 'catalog';
     protected $primaryKey = 'ID_catalog';
     protected $fillable = [
-        'ID_game',
-        'ID_user',
-        'product_name',
-        'description',
-        'harga',
-        'imgproduct',
+        'ID_game', 'ID_user', 'product_name', 'description', 'harga', 'imgproduct',
     ];
 
     public $timestamps = true;
 
-    // Define the relationship to the User model
     public function seller()
     {
         return $this->belongsTo(User::class, 'ID_user', 'ID_user');
