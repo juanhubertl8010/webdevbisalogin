@@ -35,6 +35,7 @@
                     <a class="text-body mr-3" href="{{ route('About') }}">About</a>
                     <a class="text-body mr-3" href="{{ route('contacts') }}">Contact</a>
                     <a class="text-body mr-3" href="{{ route('faq') }}">FAQs</a>
+                    <a class="text-body mr-3" href="{{ route('MyproductSeller') }}">Seller</a>
                 </div>
             </div>
             @if (Auth::check())

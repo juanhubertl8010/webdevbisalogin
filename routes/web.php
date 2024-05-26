@@ -74,6 +74,16 @@ Route::get('/', [GameController::class, 'index']);
 Route::get('/', [CatalogController::class, 'index']);
 Route::get('/shop/{ID_game}', [ShopController::class, 'showCatalogByGame'])->name('shop.byGame');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+
+Route::get('/admin-and-seller', function () {
+    return view('Admin and Seller');
+})->name('Admin and Seller');
+Route::get('/MyproductSeller', function () {
+    return view('MyproductSeller');
+})->name('MyproductSeller');
+Route::get('/homepagejoki', function () {
+    return view('HomePageJoki');
+})->name('HomePageJoki');
 // Route::get('/usrlogin/login', function() {
 //     return 'This route only supports POST';
 // });

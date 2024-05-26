@@ -61,14 +61,29 @@
                     <a class="text-body mr-3" href="{{ route('HomePageJoki') }}">User</a>
                 </div>
             </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light" onclick="window.location.href='{{ route('login') }}'">Login</button>
-                    </div>
-                    <p class="text-black ml-2 mr-2 mb-0">Guest</p>
-                </div>
+            @if (Auth::check())
+    <div class="col-lg-6 text-center text-lg-right">
+        <div class="d-inline-flex align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-light" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
             </div>
+            <p class="text-black ml-2 mr-2 mb-0">{{ Session::get('last_logged_in_username') }}</p>
+        </div>
+    </div>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+@else
+    <div class="col-lg-6 text-center text-lg-right">
+        <div class="d-inline-flex align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-light" onclick="window.location.href='{{ route('login') }}'">Login</button>
+            </div>
+            <p class="text-black ml-2 mr-2 mb-0">Guest</p>
+        </div>
+    </div>
+@endif
                     <div class="btn-group mx-2">
                         <!-- <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -144,73 +159,54 @@
         </div>
     </div>
 </div>
-    <!-- Navbar End -->
-
-
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="mt-5" style="padding-bottom: 20px; justify-content: center;">Add Product</h2>
-                <div class="form-container">
-                    <form action="submit_product.php" method="post">
-                        <div class="form-group">
-                            <label for="productName">Product Name</label>
-                            <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter product name">
-                        </div>
-                        <div class="form-group">
-                            <label for="productDescription">Product Description</label>
-                            <textarea class="form-control" id="productDescription" name="productDescription" rows="3" placeholder="Enter product description"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="harga">Price</label>
-                            <input type="number" class="form-control" id="harga" name="harga" placeholder="Enter price">
-                        </div>
-                        <div class="form-group">
-                            <label for="game">Game</label>
-                            <select class="form-control" id="game" name="game">
-                                <option value="">Select Game</option>
-                                <option value="Mobile Legends">Mobile Legends</option>
-                                <option value="PUBG">PUBG</option>
-                                <option value="Fortnite">Fortnite</option>
-                                <option value="League of Legends">League of Legends</option>
-                                <option value="Among Us">Among Us</option>
-                                <option value="Call of Duty: Warzone">Call of Duty: Warzone</option>
-                                <option value="Valorant">Valorant</option>
-                                <option value="Minecraft">Minecraft</option>
-                                <option value="FIFA 22">FIFA 22</option>
-                                <option value="The Witcher 3: Wild Hunt">The Witcher 3: Wild Hunt</option>
-                                <option value="Overwatch">Overwatch</option>
-                                <option value="Animal Crossing: New Horizons">Animal Crossing: New Horizons</option>
-                                <option value="Counter-Strike: Global Offensive">Counter-Strike: Global Offensive</option>
-                                <option value="World of Warcraft">World of Warcraft</option>
-                                <option value="Grand Theft Auto V">Grand Theft Auto V</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="productImage">Upload Product Image</label>
-                            <input type="file" class="form-control-file" id="productImage" name="productImage">
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="container-fluid">
+    <div class="row px-xl-5 justify-content-center">
+        <div class="col-lg-8 table-responsive mb-5">
+            <table class="table table-light table-borderless table-hover text-center mb-0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Products</th>
+                        <th>Price</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    <tr>
+                        <td class="align-middle"><img src="img/mobile legend product 2.jfif" alt="" style="width: 50px;"> Monster Slayer</td>
+                        <td class="align-middle">Rp 20.000</td>
+                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle"><img src="img/fortnite product.jfif" alt="" style="width: 50px;"> Soccer Star</td>
+                        <td class="align-middle">Rp 30.000</td>
+                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle"><img src="img/mobile legend product 3.jfif" alt="" style="width: 50px;"> Legend of the Rift</td>
+                        <td class="align-middle">Rp 20.000</td>
+                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle"><img src="img/valorant product.jfif" alt="" style="width: 50px;"> Impostor Master</td>
+                        <td class="align-middle">Rp 70.000</td>
+                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle"><img src="img/fortnite product.jfif" alt="" style="width: 50px;"> Visionary Strategist</td>
+                        <td class="align-middle">Rp 67.000</td>
+                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Tambahkan tombol di sini -->
+        <div class="col-lg-8 d-flex justify-content-center">
+        <a href="{{ route('Admin and Seller') }}" class="btn btn-warning btn-lg text-white">Add Product</a>
         </div>
     </div>
+</div>
+    <!-- Cart End -->
 
-    <!-- Submit Button -->
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4 text-center">
-                <button type="submit" class="btn btn-submit">Submit</button>
-            </div>
-            <div class="col-md-4"></div>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
