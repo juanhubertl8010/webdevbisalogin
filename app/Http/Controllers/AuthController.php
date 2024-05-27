@@ -16,7 +16,6 @@ class AuthController extends Controller
 
     public function login(Request $request)
 {
-    // Validation
     $request->validate([
         'username' => 'required',
         'pswd' => 'required',
@@ -45,6 +44,10 @@ class AuthController extends Controller
 
         // Storing last logged-in username in session
         Session::put('last_logged_in_username', $user->username);
+        Session::put('loggedInUserId', $user->ID_user);
+
+        // Logging logged in user ID
+        \Log::info('Logged in user ID: ' . Session::get('loggedInUserId'));
 
         // Redirecting based on user role
         if ($user->user_role === 'Admin') {

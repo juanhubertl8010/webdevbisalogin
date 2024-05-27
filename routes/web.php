@@ -58,7 +58,7 @@ Route::get('/adminhome', [AdminhomeController::class, 'show'])->name('adminhome'
 
 Route::get('/selleraddprod', [SellerAddProductController::class, 'show'])->name('selleraddprod');
 
-
+Route::get('/wishlist', [WishlistController::class, 'show'])->name('wishlist');
 
     Route::post('/usrlogin/login', [AuthController::class, 'login']);
     
