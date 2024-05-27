@@ -220,12 +220,22 @@
 
     <!-- Shop Detail Start -->
     <div class="container-fluid pb-5">
+    <div class="row px-xl-5">
+    <div class="col-lg-5 mb-30">
+        <div id="product-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner bg-light">
+                <div class="carousel-item active">
+                    <img src="{{ asset('img/' . $product->imgproduct) }}" alt="Product Image" width="500" height="500">
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <div class="col-lg-7 h-auto mb-30">
-                <div class="h-100 bg-light p-30">
-                    <h3>Monster Slayer</h3>
-                    <h3 class="font-weight-semi-bold mb-4">Rp 50.000</h3>
-                    <p class="mb-4">Hancurkan semua monster.</p>
+    <div class="col-lg-7 h-auto mb-30">
+        <div class="h-100 bg-light p-30">
+            <h3>{{ $product->product_name }}</h3>
+            <h3 class="font-weight-semi-bold mb-4">Rp {{ number_format($product->harga, 0, ',', '.') }}</h3>
+            <p class="mb-4">{{ $product->description }}</p>
                     <div class="d-flex align-items-center mb-4 pt-2">
                         <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
                             Cart</button>

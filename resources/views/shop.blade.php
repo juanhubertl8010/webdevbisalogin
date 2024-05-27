@@ -594,9 +594,9 @@
                             <a class="btn btn-outline-dark btn-square" href="">
                                 <i class="fa fa-sync-alt"></i>
                             </a>
-                            <a class="btn btn-outline-dark btn-square" href="">
-                                <i class="fa fa-search"></i>
-                            </a>
+                            <a class="btn btn-outline-dark btn-square" href="{{ route('product.show', ['id_catalog' => $item->ID_catalog]) }}">
+                        <i class="fa fa-search"></i>
+                    </a>
                         </div>
                     </div>
                     <div class="text-center py-4">

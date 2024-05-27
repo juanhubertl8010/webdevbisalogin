@@ -84,6 +84,8 @@ Route::get('/MyproductSeller', function () {
 Route::get('/homepagejoki', function () {
     return view('HomePageJoki');
 })->name('HomePageJoki');
+
+Route::get('/product/{id_catalog}', [DetailController::class, 'show'])->name('product.show');
 // Route::get('/usrlogin/login', function() {
 //     return 'This route only supports POST';
 // });
