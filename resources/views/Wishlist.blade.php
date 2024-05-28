@@ -43,7 +43,7 @@
             <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-light" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
             </div>
-            <p class="text-black ml-2 mr-2 mb-0">{{ Session::get('last_logged_in_username') }}</p>
+            <p class="text-black ml-2 mr-2 mb-0">{{ Session::get('loggedInUserId') }}</p>
         </div>
     </div>
 

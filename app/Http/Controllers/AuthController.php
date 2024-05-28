@@ -45,9 +45,9 @@ class AuthController extends Controller
         // Storing last logged-in username in session
         Session::put('last_logged_in_username', $user->username);
         Session::put('loggedInUserId', $user->ID_user);
-
+        \Log::info('Stored logged in user ID: ' . Session::get('loggedInUserId'));
         // Logging logged in user ID
-        \Log::info('Logged in user ID: ' . Session::get('loggedInUserId'));
+        //\Log::info('Logged in user ID: ' . Session::get('loggedInUserId'));
 
         // Redirecting based on user role
         if ($user->user_role === 'Admin') {
@@ -98,4 +98,15 @@ private function checkPassword($inputPassword, $hashedPassword)
         // Redirect to login with success message
         return redirect()->route('login')->with('success', 'Registration successful!');
     }
+    public function store(Request $request)
+{
+    $request->session()->regenerate();
+
+    // Assuming 'ID_user' and 'username' are the columns storing the user ID and username
+    $user = Auth::user();
+    Session::put('loggedInUserId', $user->ID_user);
+    Session::put('last_logged_in_username', $user->username);
+
+    return redirect()->intended(RouteServiceProvider::HOME);
+}
 }
