@@ -95,3 +95,5 @@ Route::get('/product/{id_catalog}', [DetailController::class, 'show'])->name('pr
 Route::post('/wishlist/add', [WishlistController::class, 'add'])->name('wishlist.add');
 
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+
+Route::post('/wishlist/remove', [WishlistController::class, 'remove'])->name('wishlist.remove');

@@ -12,7 +12,7 @@ class Wishlist extends Model
     protected $table = 'wishlist';
 
     protected $fillable = [
-        'ID_User', 'ID_catalog', 'harga',
+        'ID_wishlist','ID_User', 'ID_catalog', 'harga', 'statusdel',
     ];
 
     public $timestamps = false;

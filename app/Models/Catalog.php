@@ -12,7 +12,7 @@ class Catalog extends Model
     protected $table = 'catalog';
     //protected $primaryKey = 'ID_catalog';
     protected $fillable = [
-        'ID_catalog','ID_game', 'ID_user', 'product_name', 'description', 'harga', 'imgproduct',
+        'ID_catalog','ID_game', 'ID_user', 'product_name', 'description', 'harga', 'imgproduct', 'statusdel',
     ];
 
     public $timestamps = true;

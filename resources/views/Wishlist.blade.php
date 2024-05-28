@@ -222,24 +222,30 @@
                     </tr>
                 </thead>
                 <tbody class="align-middle">
-                    @forelse($wishlistItems as $item)
-                        <tr>
-                            <td class="align-middle">
-                                <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;"> 
-                            </td>
-                            <td class="align-middle"> {{ $item->product_name }}</td>
-                            <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
-                            <td class="align-middle">
-                                <button class="btn btn-sm btn-danger">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="3">No items in wishlist</td>
-                        </tr>
-                    @endforelse
+                @forelse($wishlistItems as $item)
+    @if($item->statusdel == false)
+        <tr>
+            <td class="align-middle">
+                <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;"> 
+            </td>
+            <td class="align-middle"> {{ $item->product_name }}</td>
+            <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
+            <td class="align-middle">
+            <form action="{{ route('wishlist.remove') }}" method="POST">
+    @csrf
+    <input type="hidden" name="ID_wishlist" value="{{ $item->ID_wishlist }}">
+    <button type="submit" class="btn btn-sm btn-danger">
+        <i class="fa fa-times"></i>
+    </button>
+</form>
+            </td>
+        </tr>
+    @endif
+@empty
+    <tr>
+        <td colspan="3">No items in wishlist</td>
+    </tr>
+@endforelse
                 </tbody>
             </table>
         </div>
