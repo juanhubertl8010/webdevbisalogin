@@ -1,4 +1,4 @@
-@if($products->isEmpty())
+<!-- @if($products->isEmpty())
     <p>No products available</p>
 @else
     <div class="row">
@@ -36,4 +36,4 @@
             </div>
         @endforeach
     </div>
-@endif
+@endif -->
