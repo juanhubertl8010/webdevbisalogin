@@ -58,7 +58,7 @@ Route::get('/adminhome', [AdminhomeController::class, 'show'])->name('adminhome'
 
 Route::get('/selleraddprod', [SellerAddProductController::class, 'show'])->name('selleraddprod');
 
-
+Route::get('/wishlist', [WishlistController::class, 'show'])->name('wishlist');
 
     Route::post('/usrlogin/login', [AuthController::class, 'login']);
     
@@ -84,6 +84,8 @@ Route::get('/MyproductSeller', function () {
 Route::get('/homepagejoki', function () {
     return view('HomePageJoki');
 })->name('HomePageJoki');
+
+Route::get('/product/{id_catalog}', [DetailController::class, 'show'])->name('product.show');
 // Route::get('/usrlogin/login', function() {
 //     return 'This route only supports POST';
 // });

@@ -1,4 +1,4 @@
-@if($games->isEmpty())
+<!-- @if($games->isEmpty())
     <p>No games available</p>
 @else
     <div class="row">
@@ -17,4 +17,4 @@
             </div>
         @endforeach
     </div>
-@endif
+@endif -->
