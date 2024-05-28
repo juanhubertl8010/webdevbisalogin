@@ -10,9 +10,9 @@ class Catalog extends Model
     use HasFactory;
 
     protected $table = 'catalog';
-    protected $primaryKey = 'ID_catalog';
+    //protected $primaryKey = 'ID_catalog';
     protected $fillable = [
-        'ID_game', 'ID_user', 'product_name', 'description', 'harga', 'imgproduct',
+        'ID_catalog','ID_game', 'ID_user', 'product_name', 'description', 'harga', 'imgproduct',
     ];
 
     public $timestamps = true;
