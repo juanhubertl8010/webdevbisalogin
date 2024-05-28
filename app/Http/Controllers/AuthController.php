@@ -41,11 +41,13 @@ class AuthController extends Controller
         // Logging user login
         \Log::info('User logged in: ' . $user->username);
         \Log::info('User details: ' . json_encode($user));
-
-        // Storing last logged-in username in session
-        Session::put('last_logged_in_username', $user->username);
         Session::put('loggedInUserId', $user->ID_user);
         \Log::info('Stored logged in user ID: ' . Session::get('loggedInUserId'));
+   
+        // Storing last logged-in username in session
+        Session::put('last_logged_in_username', $user->username);
+       
+
         // Logging logged in user ID
         //\Log::info('Logged in user ID: ' . Session::get('loggedInUserId'));
 

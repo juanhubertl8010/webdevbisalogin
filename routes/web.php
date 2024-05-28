@@ -89,3 +89,13 @@ Route::get('/product/{id_catalog}', [DetailController::class, 'show'])->name('pr
 // Route::get('/usrlogin/login', function() {
 //     return 'This route only supports POST';
 // });
+
+Route::get('/auth-check', function () {
+    if (Auth::check()) {
+        $user = Auth::user();
+        $userId = Auth::id();
+        return response()->json(['authenticated' => true, 'user' => $user, 'userId' => $userId]);
+    } else {
+        return response()->json(['authenticated' => false]);
+    }
+})->middleware('auth');
