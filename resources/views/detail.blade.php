@@ -220,7 +220,7 @@
         <div id="product-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner bg-light">
                 <div class="carousel-item active">
-                    <img src="{{ asset('img/' . $product->imgproduct) }}" alt="Product Image" width="500" height="500">
+                    <img src="{{ asset('img/' . $product->imgproduct) }}" alt="Product Image" style="max-width: 50%; height: auto;">
                 </div>
             </div>
         </div>
