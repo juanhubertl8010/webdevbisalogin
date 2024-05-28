@@ -19,4 +19,5 @@ class Keranjang extends Model
         'harga',
         'statusdel',
     ];
+    public $timestamps = false; // Nonaktifkan timestamps
 }

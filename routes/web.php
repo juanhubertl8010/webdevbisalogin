@@ -20,6 +20,7 @@ use App\Http\Controllers\homepagejoki;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\MyproductController;
+
 Route::get('/', function () {
     return view('HomePage');
 });
@@ -89,12 +90,8 @@ Route::get('/product/{id_catalog}', [DetailController::class, 'show'])->name('pr
 //     return 'This route only supports POST';
 // });
 
-Route::get('/auth-check', function () {
-    if (Auth::check()) {
-        $user = Auth::user();
-        $userId = Auth::id();
-        return response()->json(['authenticated' => true, 'user' => $user, 'userId' => $userId]);
-    } else {
-        return response()->json(['authenticated' => false]);
-    }
-})->middleware('auth');
+
+
+Route::post('/wishlist/add', [WishlistController::class, 'add'])->name('wishlist.add');
+
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');

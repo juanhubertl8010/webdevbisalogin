@@ -555,7 +555,7 @@
                             </div>
                         </div>
                     </div> -->
-              <div class="container">
+                    <div class="container">
     <div class="row">
         @foreach($catalogItems as $item)
             <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
@@ -563,37 +563,43 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src="{{ asset('img/' . $item->imgproduct) }}" alt="{{ $item->product_name }}">
                         <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href="">
+                            <!-- Add to Cart Button -->
+                            <a class="btn btn-outline-dark btn-square" href="#"
+                               onclick="event.preventDefault(); document.getElementById('add-to-cart-{{ $item->ID_catalog }}').submit();">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
-                            <a class="btn btn-outline-dark btn-square" href="">
+                            <form id="add-to-cart-{{ $item->ID_catalog }}" action="{{ route('cart.add') }}" method="POST" style="display: none;">
+                                @csrf
+                                <input type="hidden" name="ID_catalog" value="{{ $item->ID_catalog }}">
+                            </form>
+
+                            <!-- Add to Wishlist Button -->
+                            <a class="btn btn-outline-dark btn-square" href="#"
+                               onclick="event.preventDefault(); document.getElementById('add-to-wishlist-{{ $item->ID_catalog }}').submit();">
                                 <i class="far fa-heart"></i>
                             </a>
-                            <a class="btn btn-outline-dark btn-square" href="">
-                                <i class="fa fa-sync-alt"></i>
-                            </a>
+                            <form id="add-to-wishlist-{{ $item->ID_catalog }}" action="{{ route('wishlist.add') }}" method="POST" style="display: none;">
+                                @csrf
+                                <input type="hidden" name="ID_catalog" value="{{ $item->ID_catalog }}">
+                            </form>
+
+                            <!-- View Product Button -->
                             <a class="btn btn-outline-dark btn-square" href="{{ route('product.show', ['id_catalog' => $item->ID_catalog]) }}">
-                        <i class="fa fa-search"></i>
-                    </a>
+                                <i class="fa fa-search"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">
-                            {{ $item->product_name }}
-                        </a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>Rp {{ number_format($item->harga, 0, ',', '.') }}
-                            </h5>
+                        <h6 class="text-truncate mb-3">{{ $item->product_name }}</h6>
+                        <div class="d-flex justify-content-center">
+                            <h6>Rp {{ number_format($item->harga, 0, ',', '.') }}</h6>
                         </div>
-                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">
-                            {{ $item->seller ? $item->seller->username : 'Unknown Seller' }}
-                        </a>
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
-
+</div>
     <div class="col-12">
         <nav>
             <ul class="pagination justify-content-center">
