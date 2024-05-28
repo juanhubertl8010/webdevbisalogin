@@ -81,6 +81,7 @@ Route::get('/admin-and-seller', function () {
     return view('Admin and Seller');
 })->name('Admin and Seller');
 Route::get('/myproduct-seller', [MyproductController::class, 'show'])->name('MyproductSeller');
+Route::post('/myproduct-seller/remove', [MyproductController::class, 'remove'])->name('MyproductSeller.remove');
 Route::get('/homepagejoki', function () {
     return view('HomePageJoki');
 })->name('HomePageJoki');

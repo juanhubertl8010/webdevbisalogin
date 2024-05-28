@@ -170,9 +170,13 @@
                             <td class="align-middle"> {{ $item->product_name }}</td>
                             <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
                             <td class="align-middle">
-                                <button class="btn btn-sm btn-danger">
-                                    <i class="fa fa-times"></i>
-                                </button>
+                            <form action="{{ route('MyproductSeller.remove') }}" method="POST">
+    @csrf
+    <input type="hidden" name="ID_catalog" value="{{ $item->ID_catalog }}">
+    <button type="submit" class="btn btn-sm btn-danger">
+        <i class="fa fa-times"></i>
+    </button>
+</form>
                             </td>
                         </tr>
                     @empty

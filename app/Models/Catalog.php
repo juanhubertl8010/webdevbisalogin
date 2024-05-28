@@ -15,7 +15,7 @@ class Catalog extends Model
         'ID_catalog','ID_game', 'ID_user', 'product_name', 'description', 'harga', 'imgproduct', 'statusdel',
     ];
 
-    public $timestamps = true;
+    public $timestamps = false;
 
     public function seller()
     {
