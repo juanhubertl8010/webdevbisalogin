@@ -947,7 +947,7 @@ $(document).ready(function() {
 </script>
 
 
-<!-- {{ route('shop.byGame', $game->ID_game) }}  note ini route shopnya kalau misal dibutuh untuk pindah ke spesifik game-->
+
 </body>
 
 </html>
