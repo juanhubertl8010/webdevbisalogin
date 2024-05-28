@@ -184,7 +184,6 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{ route('homepage') }}" class="nav-item nav-link active">Home</a>
                             <a href="{{ route('shop') }}" class="nav-item nav-link">Shop</a>
-                            <a href="{{ route('detail') }}" class="nav-item nav-link">Shop Detail</a>
                             <a href="{{ route('cart') }}" class="nav-item nav-link">Shopping Cart</a>
                             <a href="{{ route('wishlist') }}" class="nav-item nav-link">Wishlist</a>
                             <a href="{{ route('checkout') }}" class="nav-item nav-link">Checkout</a>
@@ -196,16 +195,6 @@
                                 </div>
                             </div> -->
                             <a href="{{ route('contacts') }}" class="nav-item nav-link">Contact</a>
-                        </div>
-                        <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="{{ route('wishlist') }}" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
-                            <a href="{{ route('cart') }}" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
                         </div>
                     </div>
                 </nav>
@@ -370,9 +359,9 @@
                             <a class="btn btn-outline-dark btn-square" href="">
                                 <i class="fa fa-sync-alt"></i>
                             </a>
-                            <a class="btn btn-outline-dark btn-square" href="">
-                                <i class="fa fa-search"></i>
-                            </a>
+                            <a class="btn btn-outline-dark btn-square" href="{{ route('product.show', ['id_catalog' => $product->ID_catalog]) }}">
+                        <i class="fa fa-search"></i>
+                    </a>
                         </div>
                     </div>
                     <div class="text-center py-4">
