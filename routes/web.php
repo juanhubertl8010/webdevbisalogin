@@ -19,6 +19,7 @@ use App\Http\Controllers\SellerAddProductController;
 use App\Http\Controllers\homepagejoki;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\MyproductController;
 Route::get('/', function () {
     return view('HomePage');
 });
@@ -78,9 +79,7 @@ Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 Route::get('/admin-and-seller', function () {
     return view('Admin and Seller');
 })->name('Admin and Seller');
-Route::get('/MyproductSeller', function () {
-    return view('MyproductSeller');
-})->name('MyproductSeller');
+Route::get('/myproduct-seller', [MyproductController::class, 'show'])->name('MyproductSeller');
 Route::get('/homepagejoki', function () {
     return view('HomePageJoki');
 })->name('HomePageJoki');

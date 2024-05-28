@@ -24,14 +24,13 @@ class ForgotPassController extends Controller
         $user = User::where('username', $request->username)->first();
 
         // Jika pengguna ditemukan
-        if ($user) {
-            // Update kata sandi pengguna
-            $user->password = bcrypt($request->new_password);
-            $user->save();
+        $updated = User::where('username', $request->username)
+        ->update(['password' => bcrypt($request->new_password)]);
 
-            return redirect()->route('login')->with('success', 'Password has been reset successfully.');
-        } else {
-            return redirect()->back()->with('error', 'Username not found.');
-        }
+if ($updated) {
+return redirect()->route('login')->with('success', 'Password has been reset successfully.');
+} else {
+return redirect()->back()->with('error', 'Username not found.');
+}
     }
 }

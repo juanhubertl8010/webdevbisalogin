@@ -50,19 +50,18 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid">
+     <!-- Topbar Start -->
+     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="d-inline-flex align-items-center h-100">
                     <a class="text-body mr-3" href="{{ route('About') }}">About</a>
                     <a class="text-body mr-3" href="{{ route('contacts') }}">Contact</a>
                     <a class="text-body mr-3" href="{{ route('faq') }}">FAQs</a>
-                    <a class="text-body mr-3" href="{{ route('HomePageJoki') }}">User</a>
+                    <a class="text-body mr-3" href="{{ route('homejoki') }}">User</a>
                 </div>
             </div>
-            @if (Auth::check())
-    <div class="col-lg-6 text-center text-lg-right">
+            <div class="col-lg-6 text-center text-lg-right">
         <div class="d-inline-flex align-items-center">
             <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-light" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
@@ -74,16 +73,6 @@
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
-@else
-    <div class="col-lg-6 text-center text-lg-right">
-        <div class="d-inline-flex align-items-center">
-            <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-light" onclick="window.location.href='{{ route('login') }}'">Login</button>
-            </div>
-            <p class="text-black ml-2 mr-2 mb-0">Guest</p>
-        </div>
-    </div>
-@endif
                     <div class="btn-group mx-2">
                         <!-- <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -121,17 +110,17 @@
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                </form>
+    <form action="{{ route('shop') }}" method="GET">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search for products">
+            <div class="input-group-append">
+                <button type="submit" class="input-group-text bg-transparent text-primary">
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
+        </div>
+    </form>
+</div>
             <div class="col-lg-4 col-6 text-right">
                 <p class="m-0">Customer Service</p>
                 <h5 class="m-0">+62 8123773546</h5>
@@ -160,45 +149,42 @@
     </div>
 </div>
 <div class="container-fluid">
+    <div class="container-fluid">
     <div class="row px-xl-5 justify-content-center">
         <div class="col-lg-8 table-responsive mb-5">
             <table class="table table-light table-borderless table-hover text-center mb-0">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Products</th>
+                        <th>IMG</th>
+                        <th>Nama produk </th>
                         <th>Price</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody class="align-middle">
-                    <tr>
-                        <td class="align-middle"><img src="img/mobile legend product 2.jfif" alt="" style="width: 50px;"> Monster Slayer</td>
-                        <td class="align-middle">Rp 20.000</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle"><img src="img/fortnite product.jfif" alt="" style="width: 50px;"> Soccer Star</td>
-                        <td class="align-middle">Rp 30.000</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle"><img src="img/mobile legend product 3.jfif" alt="" style="width: 50px;"> Legend of the Rift</td>
-                        <td class="align-middle">Rp 20.000</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle"><img src="img/valorant product.jfif" alt="" style="width: 50px;"> Impostor Master</td>
-                        <td class="align-middle">Rp 70.000</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle"><img src="img/fortnite product.jfif" alt="" style="width: 50px;"> Visionary Strategist</td>
-                        <td class="align-middle">Rp 67.000</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                    </tr>
+                    @forelse($catalogItems as $item)
+                        <tr>
+                            <td class="align-middle">
+                                <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;"> 
+                            </td>
+                            <td class="align-middle"> {{ $item->product_name }}</td>
+                            <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
+                            <td class="align-middle">
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3">No items</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
         <!-- Tambahkan tombol di sini -->
         <div class="col-lg-8 d-flex justify-content-center">
         <a href="{{ route('Admin and Seller') }}" class="btn btn-warning btn-lg text-white">Add Product</a>
