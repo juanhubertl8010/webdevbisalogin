@@ -38,13 +38,17 @@
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light" onclick="window.location.href='{{ route('login') }}'">Login</button>
-                    </div>
-                    <p class="text-black ml-2 mr-2 mb-0">Guest</p>
-                </div>
+        <div class="d-inline-flex align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-light" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
             </div>
+            <p class="text-black ml-2 mr-2 mb-0">{{ Session::get('last_logged_in_username') }}</p>
+        </div>
+    </div>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
                     <div class="btn-group mx-2">
                         <!-- <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -178,7 +182,6 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{ route('homepage') }}" class="nav-item nav-link active">Home</a>
                             <a href="{{ route('shop') }}" class="nav-item nav-link">Shop</a>
-                            <a href="{{ route('detail') }}" class="nav-item nav-link">Shop Detail</a>
                             <a href="{{ route('cart') }}" class="nav-item nav-link">Shopping Cart</a>
                             <a href="{{ route('wishlist') }}" class="nav-item nav-link">Wishlist</a>
                             <a href="{{ route('checkout') }}" class="nav-item nav-link">Checkout</a>
@@ -191,16 +194,6 @@
                             </div> -->
                             <a href="{{ route('contacts') }}" class="nav-item nav-link">Contact</a>
                         </div>
-                        <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="{{ route('wishlist') }}" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
-                            <a href="{{ route('cart') }}" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
-                        </div>
                     </div>
                 </nav>
             </div>
@@ -210,175 +203,77 @@
 
 
     <!-- Breadcrumb Start -->
-    <div class="container-fluid">
-        <div class="row px-xl-5">
-            <div class="col-12">
-                <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="#">Home</a>
-                    <a class="breadcrumb-item text-dark" href="#">Shop</a>
-                    <span class="breadcrumb-item active">Shopping Cart</span>
-                </nav>
-            </div>
-        </div>
-    </div>
+  
     <!-- Breadcrumb End -->
 
 
     <!-- Cart Start -->
     <div class="container-fluid">
-        <div class="row px-xl-5">
-            <div class="col-lg-8 table-responsive mb-5">
-                <table class="table table-light table-borderless table-hover text-center mb-0">
-                    <thead class="thead-dark">
+    <div class="row px-xl-5 justify-content-center">
+        <div class="col-lg-8 table-responsive mb-5">
+            <table class="table table-light table-borderless table-hover text-center mb-0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IMG</th>
+                        <th>Nama produk</th>
+                        <th>Price</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    @forelse($cartItems as $item)
                         <tr>
-                            <th>Products</th>
-                            <th>Price</th>
-                            <!-- <th></th>
-                            <th></th> -->
-                            <th>Remove</th>
-                        </tr>
-                    </thead>
-                    <tbody class="align-middle">
-                        <tr>
-                            <td class="align-middle"><img src="img/mobile legend product 2.jfif" alt="" style="width: 50px;"> Monster Slayer</td>
-                            <td class="align-middle">Rp 20.000</td>
-                            <!-- <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                            <td class="align-middle">
+                                <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;">
                             </td>
-                            <td class="align-middle">$150</td> -->
-                            <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/fortnite product.jfif" alt="" style="width: 50px;"> Soccer Star</td>
-                            <td class="align-middle">Rp 30.000</td>
-                            <!-- <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td> -->
-                            <!-- <td class="align-middle">$150</td> -->
-                            <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/mobile legend product 3.jfif" alt="" style="width: 50px;"> Legend of the Rift</td>
-                            <td class="align-middle">Rp 20.000</td>
-                            <!-- <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                            <td class="align-middle">{{ $item->product_name }}</td>
+                            <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
+                            <td class="align-middle">
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fa fa-times"></i>
+                                </button>
                             </td>
-                            <td class="align-middle">$150</td> -->
-                            <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
                         </tr>
+                    @empty
                         <tr>
-                            <td class="align-middle"><img src="img/valorant product.jfif" alt="" style="width: 50px;"> Impostor Master</td>
-                            <td class="align-middle">Rp 70.000</td>
-                            <!-- <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">$150</td> -->
-                            <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                            <td colspan="4">No items in Cart</td>
                         </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/fortnite product.jfif" alt="" style="width: 50px;"> Visionary Strategist</td>
-                            <td class="align-middle">Rp 67.000</td>
-                            <!-- <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">$150</td> -->
-                            <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-lg-4">
-                <!-- <form class="mb-30" action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary">Apply Coupon</button>
-                        </div>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            <!-- <form class="mb-30" action="">
+                <div class="input-group">
+                    <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary">Apply Coupon</button>
                     </div>
-                </form> -->
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Cart Summary</span></h5>
-                <div class="bg-light p-30 mb-5">
-                    <div class="border-bottom pb-2">
-                        <div class="d-flex justify-content-between mb-3">
-                            <h6>Subtotal</h6>
-                            <h6>Rp 200.000</h6>
-                        </div>
-                        <!-- <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium">$10</h6>
-                        </div> -->
+                </div>
+            </form> -->
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Cart Summary</span></h5>
+            <div class="bg-light p-30 mb-5">
+                <div class="border-bottom pb-2">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h6>Subtotal</h6>
+                        <h6>Rp 200.000</h6>
                     </div>
-                    <div class="pt-2">
-                        <div class="d-flex justify-content-between mt-2">
-                            <h5>Total</h5>
-                            <h5>Rp 200.000</h5>
-                        </div>
-                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                    <!-- <div class="d-flex justify-content-between">
+                        <h6 class="font-weight-medium">Shipping</h6>
+                        <h6 class="font-weight-medium">$10</h6>
+                    </div> -->
+                </div>
+                <div class="pt-2">
+                    <div class="d-flex justify-content-between mt-2">
+                        <h5>Total</h5>
+                        <h5>Rp 200.000</h5>
                     </div>
+                    <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
     <!-- Cart End -->
 
 

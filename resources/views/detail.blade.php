@@ -42,13 +42,17 @@
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light" onclick="window.location.href='{{ route('login') }}'">Login</button>
-                    </div>
-                    <p class="text-black ml-2 mr-2 mb-0">Guest</p>
-                </div>
+        <div class="d-inline-flex align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-light" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
             </div>
+            <p class="text-black ml-2 mr-2 mb-0">{{ Session::get('last_logged_in_username') }}</p>
+        </div>
+    </div>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
                     <div class="btn-group mx-2">
                         <!-- <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
                         <div class="dropdown-menu dropdown-menu-right">
