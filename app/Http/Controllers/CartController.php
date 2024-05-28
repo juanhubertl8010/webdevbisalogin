@@ -14,9 +14,15 @@ class CartController extends Controller
             
         // Mengambil wishlist items untuk pengguna yang saat ini diautentikasi
         $cartItems = Keranjang::where('keranjang.ID_User', $loggedInUserId)
-            ->join('catalog', 'keranjang.ID_catalog', '=', 'catalog.ID_catalog')
-            ->select('catalog.product_name', 'catalog.harga', 'catalog.imgproduct')
-            ->get();
+        ->where('keranjang.statusdel', 'F')
+        ->join('catalog', function($join) {
+            $join->on('keranjang.ID_catalog', '=', 'catalog.ID_catalog')
+                ->where('catalog.statusdel', 'F');
+        })
+        ->select('keranjang.ID_keranjang', 'catalog.product_name', 'catalog.harga', 'catalog.imgproduct')
+        ->distinct('keranjang.ID_catalog')
+        ->get();
+    
         
         // Mengembalikan view wishlist beserta wishlist items
         return view('cart', compact('cartItems'));
@@ -32,6 +38,7 @@ class CartController extends Controller
 
         // Cek apakah item sudah ada di keranjang
         $exists = Keranjang::where('ID_User', $loggedInUserId)
+        ->where('statusdel', 'F')
             ->where('ID_catalog', $request->ID_catalog)
             ->exists();
 
@@ -49,5 +56,22 @@ class CartController extends Controller
         }
 
         return redirect()->back()->with('success', 'Item added to cart.');
+    }
+    public function remove(Request $request)
+{
+    // Ambil ID wishlist dari request
+    $ID_keranjang = $request->ID_keranjang;
+
+    // Periksa apakah item wishlist yang ingin dihapus dimiliki oleh pengguna yang sedang login
+    $keranjang = Keranjang::where('ID_keranjang', $ID_keranjang)->first();
+    $updated = Keranjang::where('ID_keranjang', $ID_keranjang)
+ ->update(['statusdel' => 'T']);
+    if ($updated) {
+        // Logging sebelum melakukan update
+        return redirect()->back()->with('success', 'Item removed from wishlist.');
+    } else {
+        return redirect()->back()->with('error', 'Failed to remove item from wishlist.');
+    }
+    
     }
 }

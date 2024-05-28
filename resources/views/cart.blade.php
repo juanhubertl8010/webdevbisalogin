@@ -229,9 +229,13 @@
                             <td class="align-middle">{{ $item->product_name }}</td>
                             <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
                             <td class="align-middle">
-                                <button class="btn btn-sm btn-danger">
-                                    <i class="fa fa-times"></i>
-                                </button>
+                            <form action="{{ route('cart.remove') }}" method="POST">
+    @csrf
+    <input type="hidden" name="ID_keranjang" value="{{ $item->ID_keranjang }}">
+    <button type="submit" class="btn btn-sm btn-danger">
+        <i class="fa fa-times"></i>
+    </button>
+</form>
                             </td>
                         </tr>
                     @empty
