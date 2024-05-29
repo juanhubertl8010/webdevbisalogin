@@ -563,6 +563,9 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src="{{ asset('img/' . $item->imgproduct) }}" alt="{{ $item->product_name }}">
                         <div class="product-action">
+                        <a class="btn btn-outline-dark btn-square" href="{{ route('product.show', ['id_catalog' => $item->ID_catalog]) }}">
+                                <i class="fa fa-search"></i>
+                            </a>
                             <!-- Add to Cart Button -->
                             <a class="btn btn-outline-dark btn-square" href="#"
                                onclick="event.preventDefault(); document.getElementById('add-to-cart-{{ $item->ID_catalog }}').submit();">
@@ -584,9 +587,7 @@
                             </form>
 
                             <!-- View Product Button -->
-                            <a class="btn btn-outline-dark btn-square" href="{{ route('product.show', ['id_catalog' => $item->ID_catalog]) }}">
-                                <i class="fa fa-search"></i>
-                            </a>
+                           
                         </div>
                     </div>
                     <div class="text-center py-4">

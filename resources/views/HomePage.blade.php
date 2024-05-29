@@ -343,17 +343,32 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src="{{ asset('img/' . $product->imgproduct) }}" alt="{{ $product->product_name }}">
                         <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href="">
-                                <i class="fa fa-shopping-cart"></i>
-                            </a>
-                            <a class="btn btn-outline-dark btn-square" href="">
-                                <i class="far fa-heart"></i>
-                            </a>
-                            <a class="btn btn-outline-dark btn-square" href="{{ route('product.show', ['id_catalog' => $product->ID_catalog]) }}">
-                        <i class="fa fa-search"></i>
-                    </a>
-                        </div>
-                    </div>
+        <!-- View Product Button -->
+        <a class="btn btn-outline-dark btn-square" href="{{ route('product.show', ['id_catalog' => $product->ID_catalog]) }}">
+            <i class="fa fa-search"></i>
+        </a>
+
+        <!-- Add to Cart Button -->
+        <a class="btn btn-outline-dark btn-square" href="#"
+           onclick="event.preventDefault(); document.getElementById('add-to-cart-{{ $product->ID_catalog }}').submit();">
+            <i class="fa fa-shopping-cart"></i>
+        </a>
+        <form id="add-to-cart-{{ $product->ID_catalog }}" action="{{ route('cart.add') }}" method="POST" style="display: none;">
+            @csrf
+            <input type="hidden" name="ID_catalog" value="{{ $product->ID_catalog }}">
+        </form>
+
+        <!-- Add to Wishlist Button -->
+        <a class="btn btn-outline-dark btn-square" href="#"
+           onclick="event.preventDefault(); document.getElementById('add-to-wishlist-{{ $product->ID_catalog }}').submit();">
+            <i class="far fa-heart"></i>
+        </a>
+        <form id="add-to-wishlist-{{ $product->ID_catalog }}" action="{{ route('wishlist.add') }}" method="POST" style="display: none;">
+            @csrf
+            <input type="hidden" name="ID_catalog" value="{{ $product->ID_catalog }}">
+        </form>
+    </div>
+</div>
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">
                             {{ $product->product_name }}
