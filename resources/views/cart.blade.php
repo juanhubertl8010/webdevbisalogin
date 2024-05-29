@@ -208,7 +208,7 @@
 
 
     <!-- Cart Start -->
-    <div class="container-fluid">
+<div class="container-fluid">
     <div class="row px-xl-5 justify-content-center">
         <div class="col-lg-8 table-responsive mb-5">
             <table class="table table-light table-borderless table-hover text-center mb-0">
@@ -255,12 +255,19 @@
         <div class="col-lg-4">
             <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Cart Summary</span></h5>
             <div class="bg-light p-30 mb-5" id="cart-summary">
+                <div class="border-bottom pb-2" id="summary-items">
+                    <!-- List of selected items will be appended here -->
+                </div>
                 <div class="pt-2">
                     <div class="d-flex justify-content-between mt-2">
                         <h5>Total</h5>
                         <h5 id="summary-total">Rp 0</h5>
                     </div>
-                    <button id="proceed-to-checkout" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                    <form action="{{ route('checkout') }}" method="POST" id="checkout-form">
+                        @csrf
+                        <input type="hidden" name="item_ids" id="item-ids">
+                        <button type="submit" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -269,9 +276,10 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        let summaryContainer = document.getElementById('cart-summary');
+        let summaryContainer = document.getElementById('summary-items');
         let summaryTotal = document.getElementById('summary-total');
-        let items = [];
+        let itemIdsInput = document.getElementById('item-ids');
+        let items = new Map();
 
         document.querySelectorAll('.checkout-item').forEach(function (element) {
             element.addEventListener('click', function () {
@@ -279,43 +287,22 @@
                 let itemName = this.getAttribute('data-name');
                 let itemPrice = parseInt(this.getAttribute('data-price'));
 
-                // Cek apakah item sudah ada di items
-                if (!items.some(item => item.id === itemId)) {
-                    items.push({ id: itemId, name: itemName, price: itemPrice });
+                if (!items.has(itemId)) {
+                    items.set(itemId, { name: itemName, price: itemPrice });
                     updateSummary();
                 }
             });
         });
 
         function updateSummary() {
-            let total = items.reduce((acc, item) => acc + item.price, 0);
-            summaryTotal.textContent = `Rp ${total.toLocaleString('id-ID')}`;
-
-            // Bersihkan container sebelum menambahkan item baru
-            summaryContainer.innerHTML = `<div class="d-flex justify-content-between mt-2">
-                                            <h5>Total</h5>
-                                            <h5 id="summary-total">Rp ${total.toLocaleString('id-ID')}</h5>
-                                          </div>
-                                          <button id="proceed-to-checkout" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>`;
-
-            let itemList = items.map(item => `<div class="d-flex justify-content-between"><span>${item.name}</span><span>Rp ${item.price.toLocaleString('id-ID')}</span></div>`).join('');
-            summaryContainer.insertAdjacentHTML('afterbegin', itemList);
-
-            // Tambahkan event listener untuk tombol "Proceed To Checkout"
-            document.getElementById('proceed-to-checkout').addEventListener('click', function () {
-                fetch("{{ route('cart.checkout') }}", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ item_ids: items.map(item => item.id) }) // Kirim array ID item yang ada di summary
-                }).then(response => {
-                    if (response.ok) {
-                        window.location.href = "{{ route('checkout') }}"; // Ubah sesuai dengan route checkout Anda
-                    }
-                }).catch(error => console.error('Error:', error));
+            let total = 0;
+            summaryContainer.innerHTML = '';
+            items.forEach((item, id) => {
+                total += item.price;
+                summaryContainer.insertAdjacentHTML('beforeend', `<div class="d-flex justify-content-between"><span>${item.name}</span><span>Rp ${item.price.toLocaleString('id-ID')}</span></div>`);
             });
+            summaryTotal.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+            itemIdsInput.value = Array.from(items.keys()).join(',');
         }
     });
 </script>

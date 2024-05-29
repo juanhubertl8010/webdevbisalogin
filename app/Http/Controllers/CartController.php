@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Keranjang;
+use App\Models\Transaksi;
 class CartController extends Controller
 {
     public function show()
@@ -77,12 +78,38 @@ class CartController extends Controller
     public function checkout(Request $request)
 {
     $loggedInUserId = Session::get('loggedInUserId');
-    $itemIds = $request->input('item_ids'); // Ambil ID item dari request
+    $itemIds = explode(',', $request->input('item_ids'));
 
-    // Update statusdel untuk item yang ada di item_ids dan milik user yang sedang login menjadi 'T'
+    // Ambil item dari keranjang yang akan diproses
+    $items = Keranjang::where('keranjang.ID_user', $loggedInUserId)
+                      ->whereIn('ID_keranjang', $itemIds)
+                      ->where('keranjang.statusdel', 'F')
+                      ->join('catalog', 'keranjang.ID_catalog', '=', 'catalog.ID_catalog')
+                      ->select('keranjang.*', 'catalog.harga')
+                      ->get();
+
+    // Masukkan item ke dalam tabel transaksi
+    foreach ($items as $item) {
+        $latestIDTransaksi = Transaksi::max('ID_transaksi');
+        $newIDTransaksi = 'T' . str_pad((intval(substr($latestIDTransaksi, 1)) + 1), 4, '0', STR_PAD_LEFT);
+
+        Transaksi::create([
+            'ID_transaksi' => $newIDTransaksi,
+            'ID_catalog' => $item->ID_catalog,
+            'transaksi_date' => now(),
+            'ID_user' => $loggedInUserId,
+            'harga' => $item->harga,  // Menggunakan harga dari join dengan catalog
+        ]);
+    }
+
+    // Update statusdel untuk item yang ada di item_ids menjadi 'T'
     Keranjang::where('ID_user', $loggedInUserId)
              ->whereIn('ID_keranjang', $itemIds)
              ->update(['statusdel' => 'T']);
+
+    // Redirect ke halaman checkout (sesuaikan URL halaman checkout Anda)
+  
+
 
     // Redirect ke halaman checkout (sesuaikan URL halaman checkout Anda)
     return redirect()->route('checkout');
