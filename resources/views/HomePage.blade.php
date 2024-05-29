@@ -187,7 +187,7 @@
                             <a href="{{ route('cart') }}" class="nav-item nav-link">Shopping Cart</a>
                             <a href="{{ route('wishlist') }}" class="nav-item nav-link">Wishlist</a>
                             <a href="{{ route('checkout') }}" class="nav-item nav-link">Checkout</a>
-                            <a href="{{ route('contacts') }}" class="nav-item nav-link">Contact</a>
+                            <a href="{{ route('contacts') }}" class="nav-item nav-link">My Transaction</a>
                         </div>
                     </div>
                 </nav>

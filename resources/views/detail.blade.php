@@ -197,7 +197,7 @@
                                     <a href="checkout.html" class="dropdown-item">Checkout</a>
                                 </div>
                             </div> -->
-                            <a href="{{ route('contacts') }}" class="nav-item nav-link">Contact</a>
+                            <a href="{{ route('contacts') }}" class="nav-item nav-link">My Transaction</a>
                         </div>
                        
                     </div>
@@ -232,8 +232,11 @@
             <h3 class="font-weight-semi-bold mb-4">Rp {{ number_format($product->harga, 0, ',', '.') }}</h3>
             <p class="mb-4">{{ $product->description }}</p>
                     <div class="d-flex align-items-center mb-4 pt-2">
+                    <form action="{{ route('cart.add') }}" method="POST" id="checkout-form">
+                @csrf
                         <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
                             Cart</button>
+</form>
                     </div>
                 </div>
             </div>

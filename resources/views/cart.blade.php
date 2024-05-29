@@ -192,7 +192,7 @@
                                     <a href="checkout.html" class="dropdown-item">Checkout</a>
                                 </div>
                             </div> -->
-                            <a href="{{ route('contacts') }}" class="nav-item nav-link">Contact</a>
+                            <a href="{{ route('contacts') }}" class="nav-item nav-link">My Transaction</a>
                         </div>
                     </div>
                 </nav>
