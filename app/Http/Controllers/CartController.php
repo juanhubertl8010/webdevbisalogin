@@ -74,4 +74,17 @@ class CartController extends Controller
     }
     
     }
+    public function checkout(Request $request)
+{
+    $loggedInUserId = Session::get('loggedInUserId');
+    $itemIds = $request->input('item_ids'); // Ambil ID item dari request
+
+    // Update statusdel untuk item yang ada di item_ids dan milik user yang sedang login menjadi 'T'
+    Keranjang::where('ID_user', $loggedInUserId)
+             ->whereIn('ID_keranjang', $itemIds)
+             ->update(['statusdel' => 'T']);
+
+    // Redirect ke halaman checkout (sesuaikan URL halaman checkout Anda)
+    return redirect()->route('checkout');
+}
 }

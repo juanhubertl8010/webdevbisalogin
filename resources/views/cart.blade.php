@@ -217,6 +217,7 @@
                         <th>IMG</th>
                         <th>Nama produk</th>
                         <th>Price</th>
+                        <th>To CheckOut</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
@@ -229,55 +230,95 @@
                             <td class="align-middle">{{ $item->product_name }}</td>
                             <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
                             <td class="align-middle">
-                            <form action="{{ route('cart.remove') }}" method="POST">
-    @csrf
-    <input type="hidden" name="ID_keranjang" value="{{ $item->ID_keranjang }}">
-    <button type="submit" class="btn btn-sm btn-danger">
-        <i class="fa fa-times"></i>
-    </button>
-</form>
+                                <div class="bg-success d-inline-block checkout-item" data-id="{{ $item->ID_keranjang }}" data-name="{{ $item->product_name }}" data-price="{{ $item->harga }}" style="width: 24px; height: 24px; border-radius: 4px;">
+                                    <i class="fa fa-check text-white" style="line-height: 24px;"></i>
+                                </div>
+                            </td>
+                            <td class="align-middle">
+                                <form action="{{ route('cart.remove') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="ID_keranjang" value="{{ $item->ID_keranjang }}">
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4">No items in Cart</td>
+                            <td colspan="5">No items in Cart</td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
         </div>
         <div class="col-lg-4">
-            <!-- <form class="mb-30" action="">
-                <div class="input-group">
-                    <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary">Apply Coupon</button>
-                    </div>
-                </div>
-            </form> -->
             <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Cart Summary</span></h5>
-            <div class="bg-light p-30 mb-5">
-                <div class="border-bottom pb-2">
-                    <div class="d-flex justify-content-between mb-3">
-                        <h6>Subtotal</h6>
-                        <h6>Rp 200.000</h6>
-                    </div>
-                    <!-- <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-medium">Shipping</h6>
-                        <h6 class="font-weight-medium">$10</h6>
-                    </div> -->
-                </div>
+            <div class="bg-light p-30 mb-5" id="cart-summary">
                 <div class="pt-2">
                     <div class="d-flex justify-content-between mt-2">
                         <h5>Total</h5>
-                        <h5>Rp 200.000</h5>
+                        <h5 id="summary-total">Rp 0</h5>
                     </div>
-                    <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                    <button id="proceed-to-checkout" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let summaryContainer = document.getElementById('cart-summary');
+        let summaryTotal = document.getElementById('summary-total');
+        let items = [];
+
+        document.querySelectorAll('.checkout-item').forEach(function (element) {
+            element.addEventListener('click', function () {
+                let itemId = this.getAttribute('data-id');
+                let itemName = this.getAttribute('data-name');
+                let itemPrice = parseInt(this.getAttribute('data-price'));
+
+                // Cek apakah item sudah ada di items
+                if (!items.some(item => item.id === itemId)) {
+                    items.push({ id: itemId, name: itemName, price: itemPrice });
+                    updateSummary();
+                }
+            });
+        });
+
+        function updateSummary() {
+            let total = items.reduce((acc, item) => acc + item.price, 0);
+            summaryTotal.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+
+            // Bersihkan container sebelum menambahkan item baru
+            summaryContainer.innerHTML = `<div class="d-flex justify-content-between mt-2">
+                                            <h5>Total</h5>
+                                            <h5 id="summary-total">Rp ${total.toLocaleString('id-ID')}</h5>
+                                          </div>
+                                          <button id="proceed-to-checkout" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>`;
+
+            let itemList = items.map(item => `<div class="d-flex justify-content-between"><span>${item.name}</span><span>Rp ${item.price.toLocaleString('id-ID')}</span></div>`).join('');
+            summaryContainer.insertAdjacentHTML('afterbegin', itemList);
+
+            // Tambahkan event listener untuk tombol "Proceed To Checkout"
+            document.getElementById('proceed-to-checkout').addEventListener('click', function () {
+                fetch("{{ route('cart.checkout') }}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({ item_ids: items.map(item => item.id) }) // Kirim array ID item yang ada di summary
+                }).then(response => {
+                    if (response.ok) {
+                        window.location.href = "{{ route('checkout') }}"; // Ubah sesuai dengan route checkout Anda
+                    }
+                }).catch(error => console.error('Error:', error));
+            });
+        }
+    });
+</script>
     <!-- Cart End -->
 
 
