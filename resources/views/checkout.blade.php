@@ -208,193 +208,109 @@
 
     <!-- Checkout Start -->
     <div class="container-fluid">
-        <div class="row px-xl-5">
-            <div class="col-lg-8">
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Billing Address</span></h5>
-                <div class="bg-light p-30 mb-5">
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>First Name</label>
-                            <input class="form-control" type="text" placeholder="John">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Last Name</label>
-                            <input class="form-control" type="text" placeholder="Doe">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Mobile No</label>
-                            <input class="form-control" type="text" placeholder="+123 456 789">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Address Line 1</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Address Line 2</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Country</label>
-                            <select class="custom-select">
-                                <option selected>United States</option>
-                                <option>Afghanistan</option>
-                                <option>Albania</option>
-                                <option>Algeria</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>City</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>State</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>ZIP Code</label>
-                            <input class="form-control" type="text" placeholder="123">
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="newaccount">
-                                <label class="custom-control-label" for="newaccount">Create an account</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="shipto">
-                                <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="collapse mb-5" id="shipping-address">
-                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Shipping Address</span></h5>
-                    <div class="bg-light p-30">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label>First Name</label>
-                                <input class="form-control" type="text" placeholder="John">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Last Name</label>
-                                <input class="form-control" type="text" placeholder="Doe">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>E-mail</label>
-                                <input class="form-control" type="text" placeholder="example@email.com">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Mobile No</label>
-                                <input class="form-control" type="text" placeholder="+123 456 789">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Address Line 1</label>
-                                <input class="form-control" type="text" placeholder="123 Street">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Address Line 2</label>
-                                <input class="form-control" type="text" placeholder="123 Street">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Country</label>
-                                <select class="custom-select">
-                                    <option selected>United States</option>
-                                    <option>Afghanistan</option>
-                                    <option>Albania</option>
-                                    <option>Algeria</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>City</label>
-                                <input class="form-control" type="text" placeholder="New York">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>State</label>
-                                <input class="form-control" type="text" placeholder="New York">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>ZIP Code</label>
-                                <input class="form-control" type="text" placeholder="123">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Order Total</span></h5>
-                <div class="bg-light p-30 mb-5">
-                    <div class="border-bottom">
-                        <h6 class="mb-3">Products</h6>
-                        <div class="d-flex justify-content-between">
-                            <p>Monster Slayer</p>
-                            <p>Rp 20.000</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Soccer Star</p>
-                            <p>Rp 30.000</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Legend of the Rift</p>
-                            <p>Rp 20.000</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Impostor Master</p>
-                            <p>Rp 70.000</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Visionary Strategist</p>
-                            <p>Rp 67.000</p>
-                        </div>
-                    </div>
-                    <div class="border-bottom pt-3 pb-2">
-                        <div class="d-flex justify-content-between mb-3">
-                            <h6>Subtotal</h6>
-                            <h6>Rp 200.000</h6>
-                        </div>
-                        <!-- <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium">$10</h6>
-                        </div> -->
-                    </div>
-                    <div class="pt-2">
-                        <div class="d-flex justify-content-between mt-2">
-                            <h5>Total</h5>
-                            <h5>Rp 200.000</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-5">
-                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Payment</span></h5>
-                    <div class="bg-light p-30">
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                <label class="custom-control-label" for="directcheck">Direct Check</label>
-                            </div>
-                        </div>
-                        <div class="form-group mb-4">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
-                            </div>
-                        </div>
-                        <button class="btn btn-block btn-primary font-weight-bold py-3">Place Order</button>
-                    </div>
-                </div>
+    <div class="row px-xl-5 justify-content-center">
+        <div class="col-lg-8 table-responsive mb-5">
+            <table class="table table-light table-borderless table-hover text-center mb-0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IMG</th>
+                        <th>Nama produk</th>
+                        <th>Price</th>
+                        <th>Note</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    @php
+                        $uniqueProducts = [];
+                    @endphp
+                    @forelse($transaksiItems as $item)
+                        @if($item->statusdel == false && !in_array($item->product_name, $uniqueProducts))
+                            @php
+                                // Tambahkan nama produk ke dalam array uniqueProducts
+                                $uniqueProducts[] = $item->product_name;
+                            @endphp
+                            <tr>
+                                <td class="align-middle" data-price="{{ $item->harga }}">
+                                    <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;"> 
+                                </td>
+                                <td class="align-middle">{{ $item->product_name }}</td>
+                                <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
+                                <td class="align-middle">
+                                    <input type="text" name="note" class="form-control note-input" placeholder="Note">
+                                </td>
+                            </tr>
+                        @endif
+                    @empty
+                        <tr>
+                            <td colspan="4">No items in Checkout</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+            <div class="text-right mt-3">
+                <h5>Total</h5>
+                <h5 id="summary-total">Rp 0</h5>
             </div>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <button id="paymentButton" type="button" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Payment</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('paymentButton').addEventListener('click', function() {
+        // Ambil semua input catatan
+        var noteInputs = document.querySelectorAll('.note-input');
+        
+        // Inisialisasi deskripsi
+        var description = '';
+        
+        // Loop melalui setiap input catatan dan tambahkan ke deskripsi
+        noteInputs.forEach(function(input) {
+            description += input.value + '\n';
+        });
+
+        // Kirim data deskripsi menggunakan AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/payment', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                // Jika permintaan berhasil, ubah statusdel dan status byr menjadi 'T'
+                alert('Payment successful!');
+                location.reload(); // Reload halaman setelah pembayaran berhasil
+            }
+        };
+        xhr.send(JSON.stringify({ description: description }));
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all elements with the 'data-price' attribute
+        var items = document.querySelectorAll('[data-price]');
+
+        // Initialize total price
+        var totalPrice = 0;
+
+        // Loop through each item
+        items.forEach(function(item) {
+            // Get the price from data-price attribute
+            var price = parseFloat(item.getAttribute('data-price'));
+            
+            // Add the price to the total
+            totalPrice += price;
+        });
+
+        // Set the total price in the summary
+        document.getElementById('summary-total').textContent = 'Rp ' + totalPrice.toLocaleString();
+
+        // Optional: If you want to format the total price with commas
+        // document.getElementById('summary-total').textContent = 'Rp ' + totalPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    });
+</script>
     <!-- Checkout End -->
 
 
