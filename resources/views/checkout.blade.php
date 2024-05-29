@@ -230,13 +230,13 @@
                                 $uniqueProducts[] = $item->product_name;
                             @endphp
                             <tr>
-                                <td class="align-middle" data-price="{{ $item->harga }}">
+                                <td class="align-middle" data-id="{{ $item->ID_transaksi }}" data-price="{{ $item->harga }}">
                                     <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;"> 
                                 </td>
                                 <td class="align-middle">{{ $item->product_name }}</td>
                                 <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
                                 <td class="align-middle">
-                                    <input type="text" name="note" class="form-control note-input" placeholder="Note">
+                                    <input type="text" name="note" class="form-control note-input" data-id="{{ $item->ID_transaksi }}" placeholder="Note">
                                 </td>
                             </tr>
                         @endif
@@ -255,36 +255,44 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <button id="paymentButton" type="button" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Payment</button>
+            <form action="{{ route('payment') }}" method="POST" id="checkout-form">
+                @csrf
+                <input type="hidden" name="item_ids" id="item-ids">
+                <input type="hidden" name="item_notes" id="item-notes">
+                <button type="submit" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Payment</button>
+            </form>
         </div>
     </div>
 </div>
 
 <script>
-    document.getElementById('paymentButton').addEventListener('click', function() {
-        // Ambil semua input catatan
-        var noteInputs = document.querySelectorAll('.note-input');
-        
-        // Inisialisasi deskripsi
-        var description = '';
-        
-        // Loop melalui setiap input catatan dan tambahkan ke deskripsi
-        noteInputs.forEach(function(input) {
-            description += input.value + '\n';
+    // Ketika tombol "Payment" ditekan
+    document.getElementById('checkout-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Mencegah formulir dikirim secara default
+
+        // Mengumpulkan semua ID transaksi yang dipilih
+        var itemElements = document.querySelectorAll('td[data-id]');
+        var selectedIds = [];
+        itemElements.forEach(function(item) {
+            selectedIds.push(item.dataset.id);
         });
 
-        // Kirim data deskripsi menggunakan AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/payment', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                // Jika permintaan berhasil, ubah statusdel dan status byr menjadi 'T'
-                alert('Payment successful!');
-                location.reload(); // Reload halaman setelah pembayaran berhasil
-            }
-        };
-        xhr.send(JSON.stringify({ description: description }));
+        // Mengumpulkan semua notes
+        var noteElements = document.querySelectorAll('input.note-input');
+        var notes = {};
+        noteElements.forEach(function(note) {
+            var id = note.dataset.id;
+            notes[id] = note.value;
+        });
+
+        // Menetapkan nilai ke input tersembunyi
+        document.getElementById('item-ids').value = selectedIds.join(',');
+
+        // Menetapkan nilai notes ke input tersembunyi
+        document.getElementById('item-notes').value = JSON.stringify(notes);
+
+        // Mengirim formulir
+        this.submit();
     });
 </script>
 <script>

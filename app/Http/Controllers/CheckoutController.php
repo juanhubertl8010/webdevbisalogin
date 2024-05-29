@@ -33,20 +33,25 @@ class CheckoutController extends Controller
             return view('checkout', compact('transaksiItems'));
            
         } 
-        public function makePayment(Request $request)
-    {
-        // Ambil data deskripsi dari permintaan
-        $description = $request->input('description');
+        public function processPayment(Request $request)
+{
+    // Mendapatkan id transaksi dan notes dari form
+    $itemIds = $request->input('item_ids');
+    $notes = json_decode($request->input('item_notes'), true);
 
-        // Simpan data ke dalam tabel transaksi dan ubah statusdel dan status byr menjadi 'T'
-        $transaction = new Transaksi();
-        $transaction->deskripsi = $description;
-        $transaction->statusdel = 'T';
-        $transaction->status_byr = 'T';
-        $transaction->save();
-
-        // Response jika pembayaran berhasil
-        return response()->json(['message' => 'Payment successful']);
+    // Mengubah statusdel dan statusbyr menjadi 'T' untuk item-item yang dipilih
+    $transaksiIds = explode(',', $itemIds);
+    foreach ($transaksiIds as $id) {
+        $note = isset($notes[$id]) ? $notes[$id] : '';
+        Transaksi::where('ID_transaksi', $id)->update([
+            'statusdel' => 'T',
+            'statusbyr' => 'T',
+            'deskripsi' => $note,
+        ]);
     }
 
+    // Redirect ke halaman utama
+    return redirect()->route('homepage');
+}
+      
 }

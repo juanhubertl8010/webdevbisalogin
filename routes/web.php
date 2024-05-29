@@ -103,4 +103,4 @@ Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remov
 
 Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 
-Route::post('/payment', [CheckoutController::class, 'makePayment'])->name('payment');
+Route::post('/payment', [CheckoutController::class, 'processPayment'])->name('payment');
