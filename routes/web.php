@@ -104,3 +104,7 @@ Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remov
 Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 
 Route::post('/payment', [CheckoutController::class, 'processPayment'])->name('payment');
+
+Route::middleware(['web'])->group(function () {
+    Route::post('/cartdetail/add', [DetailController::class, 'add'])->name('cartdetail.add');
+});

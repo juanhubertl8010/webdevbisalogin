@@ -30,6 +30,7 @@ class CartController extends Controller
     }
     public function add(Request $request)
     {
+        
         // Validasi request
         $request->validate([
             'ID_catalog' => 'required|exists:catalog,ID_catalog',
@@ -39,7 +40,7 @@ class CartController extends Controller
 
         // Cek apakah item sudah ada di keranjang
         $exists = Keranjang::where('ID_User', $loggedInUserId)
-        ->where('statusdel', 'F')
+            ->where('statusdel', 'F')
             ->where('ID_catalog', $request->ID_catalog)
             ->exists();
 
@@ -50,9 +51,9 @@ class CartController extends Controller
             // Tambahkan item ke keranjang
             Keranjang::create([
                 'ID_keranjang' => $newID,
-                'ID_user' => $loggedInUserId,
+                'ID_User' => $loggedInUserId,
                 'ID_catalog' => $request->ID_catalog,
-                // Harga dan field lain bisa ditambahkan sesuai kebutuhan
+                // Tambahkan harga atau field lainnya sesuai kebutuhan
             ]);
         }
 

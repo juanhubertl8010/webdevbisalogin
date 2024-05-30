@@ -24,10 +24,6 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <style>img {
-    width: 500px;
-    height: 500px;
-}</style>
 </head>
 
 <body>
@@ -90,17 +86,17 @@
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                </form>
+    <form action="{{ route('shop') }}" method="GET">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search for products">
+            <div class="input-group-append">
+                <button type="submit" class="input-group-text bg-transparent text-primary">
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
+        </div>
+    </form>
+</div>
             <div class="col-lg-4 col-6 text-right">
                 <p class="m-0">Customer Service</p>
                 <h5 class="m-0">+62 8123773546</h5>
@@ -113,7 +109,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid bg-dark mb-30">
         <div class="row px-xl-5">
-            <div class="col-lg-3 d-none d-lg-block">
+            <div class="col-lg-2 d-none d-lg-block">
                 <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
                     <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Categories</h6>
                     <i class="fa fa-angle-down text-dark"></i>
@@ -173,7 +169,7 @@
                     </div>
                 </nav>
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-9 d-flex justify-content-center">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
                         <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
@@ -184,9 +180,8 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="{{ route('homepage') }}" class="nav-item nav-link active">Home</a>
-                            <a href="{{ route('shop') }}" class="nav-item nav-link">Shop</a>
-                 
+                            <a href="{{ route('homepage') }}" class="nav-item nav-link">Home</a>
+                            <a href="{{ route('shop') }}" class="nav-item nav-link active">Shop</a>
                             <a href="{{ route('cart') }}" class="nav-item nav-link">Shopping Cart</a>
                             <a href="{{ route('wishlist') }}" class="nav-item nav-link">Wishlist</a>
                             <a href="{{ route('checkout') }}" class="nav-item nav-link">Checkout</a>
@@ -199,7 +194,6 @@
                             </div> -->
                             <a href="{{ route('contacts') }}" class="nav-item nav-link">My Transaction</a>
                         </div>
-                       
                     </div>
                 </nav>
             </div>
@@ -216,31 +210,35 @@
     <!-- Shop Detail Start -->
     <div class="container-fluid pb-5">
     <div class="row px-xl-5">
-    <div class="col-lg-5 mb-30">
-        <div id="product-carousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner bg-light">
-                <div class="carousel-item active">
-                    <img src="{{ asset('img/' . $product->imgproduct) }}" alt="Product Image" style="max-width: 50%; height: auto;">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-7 h-auto mb-30">
-        <div class="h-100 bg-light p-30">
-            <h3>{{ $product->product_name }}</h3>
-            <h3 class="font-weight-semi-bold mb-4">Rp {{ number_format($product->harga, 0, ',', '.') }}</h3>
-            <p class="mb-4">{{ $product->description }}</p>
-                    <div class="d-flex align-items-center mb-4 pt-2">
-                    <form action="{{ route('cart.add') }}" method="POST" id="checkout-form">
-                @csrf
-                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
-                            Cart</button>
-</form>
+        <div class="col-lg-5 mb-30">
+            <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner bg-light">
+                    <div class="carousel-item active">
+                        <img src="{{ asset('img/' . $product->imgproduct) }}" alt="Product Image" style="max-width: 50%; height: auto;">
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-7 h-auto mb-30">
+            <div class="h-100 bg-light p-30">
+                <h3>{{ $product->product_name }}</h3>
+                <h3 class="font-weight-semi-bold mb-4">Rp {{ number_format($product->harga, 0, ',', '.') }}</h3>
+                <p class="mb-4">{{ $product->description }}</p>
+                <div class="d-flex align-items-center mb-4 pt-2">
+    <!-- Add to Cart Button -->
+    <button class="btn btn-primary px-3" onclick="event.preventDefault(); document.getElementById('add-to-cart-{{ $product->ID_catalog }}').submit();">
+        <i class="fa fa-shopping-cart mr-1"></i> Add To Cart
+    </button>
+    <form id="add-to-cart-{{ $product->ID_catalog }}" action="{{ route('cartdetail.add') }}" method="POST" style="display: none;">
+        @csrf
+        <input type="hidden" name="ID_catalog" value="{{ $product->ID_catalog }}">
+    </form>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
         <div class="row px-xl-5">
             <div class="col">
                 <div class="bg-light p-30">
