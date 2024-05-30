@@ -181,7 +181,12 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{ route('homepage') }}" class="nav-item nav-link">Home</a>
+<<<<<<< HEAD
                             <a href="{{ route('shop') }}" class="nav-item nav-link active">Shop</a>
+=======
+                            <a href="{{ route('shop') }}" class="nav-item nav-link  active">Shop</a>
+                 
+>>>>>>> 942a4d4677e3c6906700a04ea31e573dc6862ef1
                             <a href="{{ route('cart') }}" class="nav-item nav-link">Shopping Cart</a>
                             <a href="{{ route('wishlist') }}" class="nav-item nav-link">Wishlist</a>
                             <a href="{{ route('checkout') }}" class="nav-item nav-link">Checkout</a>
