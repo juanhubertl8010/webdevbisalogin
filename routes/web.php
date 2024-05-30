@@ -95,7 +95,7 @@ Route::get('/product/{id_catalog}', [DetailController::class, 'show'])->name('pr
 
 Route::post('/wishlist/add', [WishlistController::class, 'add'])->name('wishlist.add');
 
-Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+
 
 Route::post('/wishlist/remove', [WishlistController::class, 'remove'])->name('wishlist.remove');
 
@@ -107,4 +107,5 @@ Route::post('/payment', [CheckoutController::class, 'processPayment'])->name('pa
 
 Route::middleware(['web'])->group(function () {
     Route::post('/cartdetail/add', [DetailController::class, 'add'])->name('cartdetail.add');
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 });

@@ -51,7 +51,7 @@ class CartController extends Controller
             // Tambahkan item ke keranjang
             Keranjang::create([
                 'ID_keranjang' => $newID,
-                'ID_User' => $loggedInUserId,
+                'ID_user' => $loggedInUserId,
                 'ID_catalog' => $request->ID_catalog,
                 // Tambahkan harga atau field lainnya sesuai kebutuhan
             ]);
@@ -89,17 +89,32 @@ class CartController extends Controller
                       ->select('keranjang.*', 'catalog.harga')
                       ->get();
 
-    // Masukkan item ke dalam tabel transaksi
     foreach ($items as $item) {
+        // Cek apakah sudah ada transaksi untuk katalog yang sama dengan statusdel 'F' dan statusbyr 'F'
+        $existingTransaction = Transaksi::where('ID_catalog', $item->ID_catalog)
+                                        ->where('ID_user', $loggedInUserId)
+                                        ->where('statusdel', 'F')
+                                        ->where('statusbyr', 'F')
+                                        ->exists();
+
+        if ($existingTransaction) {
+            // Jika ada, abaikan item ini dan lanjutkan ke item berikutnya
+            continue;
+        }
+
+        // Dapatkan ID_transaksi terbaru dan buat ID_transaksi baru
         $latestIDTransaksi = Transaksi::max('ID_transaksi');
         $newIDTransaksi = 'T' . str_pad((intval(substr($latestIDTransaksi, 1)) + 1), 4, '0', STR_PAD_LEFT);
 
+        // Masukkan item ke dalam tabel transaksi
         Transaksi::create([
             'ID_transaksi' => $newIDTransaksi,
             'ID_catalog' => $item->ID_catalog,
             'transaksi_date' => now(),
             'ID_user' => $loggedInUserId,
             'harga' => $item->harga,  // Menggunakan harga dari join dengan catalog
+            'statusdel' => 'F',  // Pastikan untuk menyetujui statusdel jika diperlukan
+            'statusbyr' => 'F',  // Pastikan untuk menyetujui statusbyr jika diperlukan
         ]);
     }
 
@@ -107,10 +122,6 @@ class CartController extends Controller
     Keranjang::where('ID_user', $loggedInUserId)
              ->whereIn('ID_keranjang', $itemIds)
              ->update(['statusdel' => 'T']);
-
-    // Redirect ke halaman checkout (sesuaikan URL halaman checkout Anda)
-  
-
 
     // Redirect ke halaman checkout (sesuaikan URL halaman checkout Anda)
     return redirect()->route('checkout');
