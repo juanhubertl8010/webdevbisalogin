@@ -140,7 +140,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
                     <div class="navbar-nav d-flex justify-content-center w-100 py-0">
-                        <a href="" class="nav-item nav-link active" style="color: #ffffff;">My Product</a>
+                        <a href="{{ route('MyproductSeller') }}" class="nav-item nav-link active">My Product</a>
                         <a href="" class="nav-item nav-link">My Order</a>
                     </div>
                 </div>
@@ -149,14 +149,13 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="container-fluid">
     <div class="row px-xl-5 justify-content-center">
         <div class="col-lg-8 table-responsive mb-5">
             <table class="table table-light table-borderless table-hover text-center mb-0">
                 <thead class="thead-dark">
                     <tr>
                         <th>IMG</th>
-                        <th>Nama produk </th>
+                        <th>Nama produk</th>
                         <th>Price</th>
                         <th>Remove</th>
                     </tr>
@@ -167,31 +166,31 @@
                             <td class="align-middle">
                                 <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;"> 
                             </td>
-                            <td class="align-middle"> {{ $item->product_name }}</td>
+                            <td class="align-middle">{{ $item->product_name }}</td>
                             <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
                             <td class="align-middle">
-                            <form action="{{ route('MyproductSeller.remove') }}" method="POST">
-    @csrf
-    <input type="hidden" name="ID_catalog" value="{{ $item->ID_catalog }}">
-    <button type="submit" class="btn btn-sm btn-danger">
-        <i class="fa fa-times"></i>
-    </button>
-</form>
+                                <form action="{{ route('MyproductSeller.remove') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="ID_catalog" value="{{ $item->ID_catalog }}">
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="3">No items</td>
+                            <td colspan="4">No items</td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
         </div>
     </div>
-</div>
-        <!-- Tambahkan tombol di sini -->
-        <div class="col-lg-8 d-flex justify-content-center">
-        <a href="{{ route('Admin and Seller') }}" class="btn btn-warning btn-lg text-white">Add Product</a>
+    <!-- Tambahkan tombol di sini -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8 d-flex justify-content-center mt-4">
+            <a href="{{ route('selleraddprod') }}" class="btn btn-warning btn-lg text-white">Add Product</a>
         </div>
     </div>
 </div>

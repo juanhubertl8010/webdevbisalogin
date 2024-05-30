@@ -77,9 +77,7 @@ Route::get('/', [CatalogController::class, 'index']);
 Route::get('/shop/{ID_game}', [ShopController::class, 'showCatalogByGame'])->name('shop.byGame');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
-Route::get('/admin-and-seller', function () {
-    return view('Admin and Seller');
-})->name('Admin and Seller');
+
 Route::get('/myproduct-seller', [MyproductController::class, 'show'])->name('MyproductSeller');
 Route::post('/myproduct-seller/remove', [MyproductController::class, 'remove'])->name('MyproductSeller.remove');
 Route::get('/homepagejoki', function () {
@@ -109,3 +107,4 @@ Route::middleware(['web'])->group(function () {
     Route::post('/cartdetail/add', [DetailController::class, 'add'])->name('cartdetail.add');
     Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 });
+Route::post('/catalog/store', [SellerAddProductController::class, 'store'])->name('catalog.store');

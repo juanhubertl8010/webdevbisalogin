@@ -50,25 +50,29 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid">
+     <!-- Topbar Start -->
+     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="d-inline-flex align-items-center h-100">
                     <a class="text-body mr-3" href="{{ route('About') }}">About</a>
                     <a class="text-body mr-3" href="{{ route('contacts') }}">Contact</a>
                     <a class="text-body mr-3" href="{{ route('faq') }}">FAQs</a>
-                    <a class="text-body mr-3" href="{{ route('HomePageJoki') }}">User</a>
+                    <a class="text-body mr-3" href="{{ route('homejoki') }}">User</a>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light" onclick="window.location.href='{{ route('login') }}'">Login</button>
-                    </div>
-                    <p class="text-black ml-2 mr-2 mb-0">Guest</p>
-                </div>
+        <div class="d-inline-flex align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-light" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
             </div>
+            <p class="text-black ml-2 mr-2 mb-0">{{ Session::get('last_logged_in_username') }}</p>
+        </div>
+    </div>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
                     <div class="btn-group mx-2">
                         <!-- <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -106,17 +110,17 @@
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                </form>
+    <form action="{{ route('shop') }}" method="GET">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search for products">
+            <div class="input-group-append">
+                <button type="submit" class="input-group-text bg-transparent text-primary">
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
+        </div>
+    </form>
+</div>
             <div class="col-lg-4 col-6 text-right">
                 <p class="m-0">Customer Service</p>
                 <h5 class="m-0">+62 8123773546</h5>
@@ -136,7 +140,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
                     <div class="navbar-nav d-flex justify-content-center w-100 py-0">
-                        <a href="" class="nav-item nav-link active" style="color: #ffffff;">My Product</a>
+                        <a href="{{ route('MyproductSeller') }}" class="nav-item nav-link active">My Product</a>
                         <a href="" class="nav-item nav-link">My Order</a>
                     </div>
                 </div>
@@ -144,69 +148,49 @@
         </div>
     </div>
 </div>
-    <!-- Navbar End -->
 
 
     <!-- Main Content -->
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="mt-5" style="padding-bottom: 20px; justify-content: center;">Add Product</h2>
-                <div class="form-container">
-                    <form action="submit_product.php" method="post">
-                        <div class="form-group">
-                            <label for="productName">Product Name</label>
-                            <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter product name">
-                        </div>
-                        <div class="form-group">
-                            <label for="productDescription">Product Description</label>
-                            <textarea class="form-control" id="productDescription" name="productDescription" rows="3" placeholder="Enter product description"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="harga">Price</label>
-                            <input type="number" class="form-control" id="harga" name="harga" placeholder="Enter price">
-                        </div>
-                        <div class="form-group">
-                            <label for="game">Game</label>
-                            <select class="form-control" id="game" name="game">
-                                <option value="">Select Game</option>
-                                <option value="Mobile Legends">Mobile Legends</option>
-                                <option value="PUBG">PUBG</option>
-                                <option value="Fortnite">Fortnite</option>
-                                <option value="League of Legends">League of Legends</option>
-                                <option value="Among Us">Among Us</option>
-                                <option value="Call of Duty: Warzone">Call of Duty: Warzone</option>
-                                <option value="Valorant">Valorant</option>
-                                <option value="Minecraft">Minecraft</option>
-                                <option value="FIFA 22">FIFA 22</option>
-                                <option value="The Witcher 3: Wild Hunt">The Witcher 3: Wild Hunt</option>
-                                <option value="Overwatch">Overwatch</option>
-                                <option value="Animal Crossing: New Horizons">Animal Crossing: New Horizons</option>
-                                <option value="Counter-Strike: Global Offensive">Counter-Strike: Global Offensive</option>
-                                <option value="World of Warcraft">World of Warcraft</option>
-                                <option value="Grand Theft Auto V">Grand Theft Auto V</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="productImage">Upload Product Image</label>
-                            <input type="file" class="form-control-file" id="productImage" name="productImage">
-                        </div>
-                    </form>
-                </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mt-5" style="padding-bottom: 20px; justify-content: center;">Add Product</h2>
+            <div class="form-container">
+                <form action="{{ route('catalog.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="productName">Product Name</label>
+                        <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label for="productDescription">Product Description</label>
+                        <textarea class="form-control" id="productDescription" name="productDescription" rows="3" placeholder="Enter product description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="harga">Price</label>
+                        <input type="number" class="form-control" id="harga" name="harga" placeholder="Enter price">
+                    </div>
+                    <div class="form-group">
+                        <label for="game">Game</label>
+                        <select class="form-control" id="game" name="game">
+                            <option value="">Select Game</option>
+                            @foreach($games as $game)
+                                <option value="{{ $game->ID_game }}">{{ $game->game_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="productImage">Upload Product Image</label>
+                        <input type="file" class="form-control-file" id="productImage" name="productImage">
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-submit">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-
-    <!-- Submit Button -->
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4 text-center">
-                <button type="submit" class="btn btn-submit">Submit</button>
-            </div>
-            <div class="col-md-4"></div>
-        </div>
-    </div>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
