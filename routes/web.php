@@ -21,7 +21,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\MyproductController;
 use App\Http\Controllers\SellerEditController;
-
+use App\Http\Controllers\MyOrderController;
 Route::get('/', function () {
     return view('HomePage');
 });
@@ -113,3 +113,5 @@ Route::post('/catalog/store', [SellerAddProductController::class, 'store'])->nam
 Route::match(['get', 'post'], '/sellereditprod', [SellerEditController::class, 'show'])->name('sellereditprod');
 
 Route::match(['get', 'post'], '/seller/edit/product}', [SellerEditController::class, 'updateProduct'])->name('Sellerupdateproduct');
+
+Route::get('/myorder', [MyOrderController::class, 'index'])->name('myorder');

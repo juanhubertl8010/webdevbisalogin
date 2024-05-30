@@ -140,8 +140,8 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
                     <div class="navbar-nav d-flex justify-content-center w-100 py-0">
-                        <a href="{{ route('MyproductSeller') }}" class="nav-item nav-link active">My Product</a>
-                        <a href="{{ route('myorder') }}" class="nav-item nav-link">My Order</a>
+                        <a href="{{ route('MyproductSeller') }}" class="nav-item nav-link ">My Product</a>
+                        <a href="{{ route('myorder') }}" class="nav-item nav-link active">My Order</a>
                     </div>
                 </div>
             </nav>
@@ -155,58 +155,34 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>IMG</th>
-                        <th>Nama produk</th>
+                        <th>Username</th>
+                        <th>Nama Produk</th>
                         <th>Price</th>
-                        <th>Edit</th>
-                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody class="align-middle">
-                @foreach($catalogItems as $item)
-    <tr>
-        <td class="align-middle">
-            <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;"> 
-        </td>
-        <td class="align-middle">{{ $item->product_name }}</td>
-        <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
-        <td class="align-middle">
-            <!-- Tombol Edit -->
-            <form action="{{ route('sellereditprod') }}" method="POST">
-                @csrf
-                <input type="hidden" name="ID_catalog" value="{{ $item->ID_catalog }}">
-                <button type="submit" class="btn btn-sm btn-warning">
-                    <i class="fa fa-edit" style="color: white;"></i> <!-- Tambahkan logo edit warna putih -->
-                </button>
-            </form>
-        </td>
-        <td class="align-middle">
-            <!-- Tombol Remove -->
-            <form action="{{ route('MyproductSeller.remove') }}" method="POST">
-                @csrf
-                <input type="hidden" name="ID_catalog" value="{{ $item->ID_catalog }}">
-                <button type="submit" class="btn btn-sm btn-danger">
-                    <i class="fa fa-times"></i>
-                </button>
-            </form>
-        </td>
-    </tr>
-@endforeach
+                    @if($catalogItems->isEmpty())
+                        <tr>
+                            <td colspan="4" class="align-middle">No orders</td>
+                        </tr>
+                    @else
+                        @foreach($catalogItems as $item)
+                            <tr>
+                                <td class="align-middle">
+                                    <img src="{{ asset('img/' . $item->imgproduct) }}" alt="{{ $item->product_name }}" style="width: 50px;">
+                                </td>
+                                <td class="align-middle">{{ $item->buyer_username }}</td>
+                                <td class="align-middle">{{ $item->product_name }}</td>
+                                <td class="align-middle">Rp {{ number_format($item->transaksi_harga, 0, ',', '.') }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
     </div>
-    <!-- Tambahkan tombol di sini -->
-    <div class="row justify-content-center">
-        <div class="col-lg-8 d-flex justify-content-center mt-4">
-            <a href="{{ route('selleraddprod') }}" class="btn btn-warning btn-lg text-white">Add Product</a>
-        </div>
-    </div>
 </div>
-    <!-- Cart End -->
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+<div class="container-fluid bg-dark text-secondary mt-5 pt-5">
         <div class="row px-xl-5 pt-5">
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
                 <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
