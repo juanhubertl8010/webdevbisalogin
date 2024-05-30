@@ -22,6 +22,11 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\MyproductController;
 use App\Http\Controllers\SellerEditController;
 use App\Http\Controllers\MyOrderController;
+use App\Http\Controllers\AllProductController;
+use App\Http\Controllers\AlluserController;
+use App\Http\Controllers\AllWishlistController;
+use App\Http\Controllers\AllcartController;
+use App\Http\Controllers\AllTransController;
 Route::get('/', function () {
     return view('HomePage');
 });
@@ -115,3 +120,13 @@ Route::match(['get', 'post'], '/sellereditprod', [SellerEditController::class, '
 Route::match(['get', 'post'], '/seller/edit/product}', [SellerEditController::class, 'updateProduct'])->name('Sellerupdateproduct');
 
 Route::get('/myorder', [MyOrderController::class, 'index'])->name('myorder');
+
+Route::post('/product/remove', [AdminhomeController::class, 'removeProduct'])->name('product.remove');
+
+Route::get('/AllProduct', [AllProductController::class, 'show'])->name('shopadmin');
+Route::get('/AllProduct/{ID_game}', [AllProductController::class, 'showCatalogByGame'])->name('shopAdmin.byGame');
+Route::get('/AllProduct', [AllProductController::class, 'index'])->name('shopadmin');
+Route::get('/users', [AlluserController::class, 'index'])->name('users.index');
+Route::get('/allwishlist', [AllWishlistController::class, 'show'])->name('allwishlist.show');
+Route::get('/allcart', [AllcartController::class, 'show'])->name('allcart.show');
+Route::get('/alltrans', [AllTransController::class, 'show'])->name('alltrans.show');
