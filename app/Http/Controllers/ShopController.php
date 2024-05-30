@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Catalog;
 use App\Models\Game; // Correctly import the Game model
 use App\Models\User;
-class ShopController extends Controller
-{
+
     // public function show()
     // {
     //     $catalogItems = Catalog::simplepaginate(9);
@@ -24,11 +23,11 @@ class ShopController extends Controller
     // return view('shop', ['catalogItems' => $catalogItems]);
     // }
 
+    class ShopController extends Controller
+{
     public function show()
     {
-        // Fetch catalog items with seller information
-        // $catalogItems = Catalog::with('seller')->simplePaginate(9);
-        $catalogItems = Catalog::simplePaginate(9);
+        $catalogItems = Catalog::where('statusdel', 'F')->simplePaginate(9);
 
         return view('shop', [
             'catalogItems' => $catalogItems,
@@ -39,16 +38,14 @@ class ShopController extends Controller
 
     public function showCatalogByGame($ID_game)
     {
-        // Fetch catalog items based on ID_game with seller information
-        // $catalogItems = Catalog::where('ID_game', $ID_game)->with('seller')->simplePaginate(9);
-        $catalogItems = Catalog::where('ID_game', $ID_game)->simplePaginate(9);
-        // $catalogItems = Catalog::simplePaginate(8, ['*'], 'products_page', $productsPage);
+        $catalogItems = Catalog::where('ID_game', $ID_game)
+                               ->where('statusdel', 'F')
+                               ->simplePaginate(9);
+
         $game = Game::find($ID_game);
         if (!$game) {
             abort(404);
         }
-
-     
 
         return view('shop', [
             'catalogItems' => $catalogItems,
@@ -56,19 +53,23 @@ class ShopController extends Controller
             'game' => $game
         ]);
     }
-    public function index(Request $request)
-{
-    $search = $request->query('search');
-    if ($search) {
-        $catalogItems = Catalog::where('product_name', 'LIKE', "%{$search}%")
-                               ->orWhere('description', 'LIKE', "%{$search}%")
-                               ->simplePaginate(9);
-    } else {
-        $catalogItems = Catalog::simplePaginate(9);
-    }
 
-    return view('shop', [
-        'catalogItems' => $catalogItems
-    ]);
-}
+    public function index(Request $request)
+    {
+        $search = $request->query('search');
+        if ($search) {
+            $catalogItems = Catalog::where(function($query) use ($search) {
+                                    $query->where('product_name', 'LIKE', "%{$search}%")
+                                          ->orWhere('description', 'LIKE', "%{$search}%");
+                                })
+                                ->where('statusdel', 'F')
+                                ->simplePaginate(9);
+        } else {
+            $catalogItems = Catalog::where('statusdel', 'F')->simplePaginate(9);
+        }
+
+        return view('shop', [
+            'catalogItems' => $catalogItems
+        ]);
+    }
 }

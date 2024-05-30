@@ -594,7 +594,11 @@
                         <h6 class="text-truncate mb-3">{{ $item->product_name }}</h6>
                         <div class="d-flex justify-content-center">
                             <h6>Rp {{ number_format($item->harga, 0, ',', '.') }}</h6>
-                        </div>
+                            </div>
+                        <a class="h6 text-decoration-none text-truncate" style="font-size: 12px;" href="">
+                            {{ $item->seller ? $item->seller->username : 'Unknown Seller' }}
+                        </a>
+                   
                     </div>
                 </div>
             </div>

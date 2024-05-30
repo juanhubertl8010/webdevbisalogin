@@ -16,7 +16,7 @@ class ContactController extends Controller
             ->where('transaksi.statusbyr', 'T')
             ->join('catalog', function($join) {
                 $join->on('transaksi.ID_catalog', '=', 'catalog.ID_catalog')
-                    ->where('catalog.statusdel', 'F');
+                ->whereIn('catalog.statusdel', ['F', 'T']); // Include 'F' or 'T' status
             })
             ->select('transaksi.ID_transaksi', 'transaksi.deskripsi','catalog.product_name', 'catalog.harga', 'catalog.imgproduct')
             ->distinct('transaksi.ID_catalog')
