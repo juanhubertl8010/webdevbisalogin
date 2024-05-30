@@ -20,6 +20,7 @@ use App\Http\Controllers\homepagejoki;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\MyproductController;
+use App\Http\Controllers\SellerEditController;
 
 Route::get('/', function () {
     return view('HomePage');
@@ -108,3 +109,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 });
 Route::post('/catalog/store', [SellerAddProductController::class, 'store'])->name('catalog.store');
+
+Route::match(['get', 'post'], '/sellereditprod', [SellerEditController::class, 'show'])->name('sellereditprod');
+
+Route::match(['get', 'post'], '/seller/edit/product}', [SellerEditController::class, 'updateProduct'])->name('Sellerupdateproduct');

@@ -148,62 +148,44 @@
         </div>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="row px-xl-5 justify-content-center">
-        <div class="col-lg-8 table-responsive mb-5">
-            <table class="table table-light table-borderless table-hover text-center mb-0">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>IMG</th>
-                        <th>Nama produk</th>
-                        <th>Price</th>
-                        <th>Edit</th>
-                        <th>Remove</th>
-                    </tr>
-                </thead>
-                <tbody class="align-middle">
-                @foreach($catalogItems as $item)
-    <tr>
-        <td class="align-middle">
-            <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;"> 
-        </td>
-        <td class="align-middle">{{ $item->product_name }}</td>
-        <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
-        <td class="align-middle">
-            <!-- Tombol Edit -->
-            <form action="{{ route('sellereditprod') }}" method="POST">
-                @csrf
-                <input type="hidden" name="ID_catalog" value="{{ $item->ID_catalog }}">
-                <button type="submit" class="btn btn-sm btn-warning">
-                    <i class="fa fa-edit" style="color: white;"></i> <!-- Tambahkan logo edit warna putih -->
-                </button>
-            </form>
-        </td>
-        <td class="align-middle">
-            <!-- Tombol Remove -->
-            <form action="{{ route('MyproductSeller.remove') }}" method="POST">
-                @csrf
-                <input type="hidden" name="ID_catalog" value="{{ $item->ID_catalog }}">
-                <button type="submit" class="btn btn-sm btn-danger">
-                    <i class="fa fa-times"></i>
-                </button>
-            </form>
-        </td>
-    </tr>
-@endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <!-- Tambahkan tombol di sini -->
-    <div class="row justify-content-center">
-        <div class="col-lg-8 d-flex justify-content-center mt-4">
-            <a href="{{ route('selleraddprod') }}" class="btn btn-warning btn-lg text-white">Add Product</a>
+
+
+    <!-- Main Content -->
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mt-5" style="padding-bottom: 20px; justify-content: center;">Edit Product</h2>
+            <div class="form-container">
+                <form method="POST" action="{{ route('Sellerupdateproduct', ['ID_catalog' => $product->ID_catalog]) }}" enctype="multipart/form-data">
+                    @csrf
+            <input type="hidden" name="ID_catalog" value="{{ $product->ID_catalog }}">
+                    <div class="form-group">
+                        <label for="productName">Product Name</label>
+                        <input type="text" class="form-control" id="productName" name="productName" value="{{ $product->product_name }}" placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label for="productDescription">Product Description</label>
+                        <textarea class="form-control" id="productDescription" name="productDescription" rows="3" placeholder="Enter product description">{{ $product->description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="harga">Price</label>
+                        <input type="number" class="form-control" id="harga" name="harga" value="{{ $product->harga }}" placeholder="Enter price">
+                    </div>
+                    <div class="form-group">
+                        <label for="newImage">Upload New Image</label>
+                        <input type="file" class="form-control-file" id="newImage" name="newImage">
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-submit">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-    <!-- Cart End -->
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
