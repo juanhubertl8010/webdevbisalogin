@@ -29,26 +29,34 @@
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid">
-        <div class="row bg-secondary py-1 px-xl-5">
-            <div class="col-lg-6 d-none d-lg-block">
-                <div class="d-inline-flex align-items-center h-100">
-                    <a class="text-body mr-3" href="{{ route('About') }}">About</a>
-                    <a class="text-body mr-3" href="{{ route('contacts') }}">Contact</a>
-                    <a class="text-body mr-3" href="{{ route('faq') }}">FAQs</a>
-                </div>
+    <div class="row bg-secondary py-1 px-xl-5">
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="d-inline-flex align-items-center h-100">
+                <a class="text-body mr-3" href="{{ route('About') }}">About</a>
+                <a class="text-body mr-3" href="{{ route('faq') }}">FAQs</a>
+                @if(Session::get('last_logged_in_userrole') === 'Joki')
+                    <a class="text-body mr-3" href="{{ route('MyproductSeller') }}">Seller</a>
+                @endif
             </div>
-            <div class="col-lg-6 text-center text-lg-right">
+        </div>
+    <div class="col-lg-6 text-center text-lg-right">
         <div class="d-inline-flex align-items-center">
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-light" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
-            </div>
-            <p class="text-black ml-2 mr-2 mb-0">{{ Session::get('last_logged_in_username') }}</p>
-        </div>
-    </div>
+            @if(Session::get('last_logged_in_username') === null)
+            <button type="button" class="btn btn-sm btn-light" onclick="window.location.href='{{ route('login') }}';">Login</button>
+    <p class="text-black ml-2 mr-2 mb-0" style="background-color: yellow;">Guest</p>
+@else
 
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-    </form>
+
+    <button type="button" class="btn btn-sm btn-light" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
+    <p class="text-black ml-2 mr-2 mb-0">{{ Session::get('last_logged_in_username') }}</p>
+@endif
+</div>
+</div>
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
                     <div class="btn-group mx-2">
                         <!-- <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -94,9 +102,9 @@
                     <i class="fa fa-search"></i>
                 </button>
             </div>
-        </div>
-    </form>
-</div>
+                    </div>
+                </form>
+            </div>
             <div class="col-lg-4 col-6 text-right">
                 <p class="m-0">Customer Service</p>
                 <h5 class="m-0">+62 8123773546</h5>

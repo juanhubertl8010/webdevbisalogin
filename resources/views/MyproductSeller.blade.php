@@ -56,9 +56,8 @@
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="d-inline-flex align-items-center h-100">
                     <a class="text-body mr-3" href="{{ route('About') }}">About</a>
-                    <a class="text-body mr-3" href="{{ route('contacts') }}">Contact</a>
                     <a class="text-body mr-3" href="{{ route('faq') }}">FAQs</a>
-                    <a class="text-body mr-3" href="{{ route('homejoki') }}">User</a>
+                    <a class="text-body mr-3" href="{{ route('homepage') }}">User</a>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">

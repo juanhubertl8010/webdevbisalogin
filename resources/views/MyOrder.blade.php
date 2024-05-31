@@ -56,9 +56,8 @@
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="d-inline-flex align-items-center h-100">
                     <a class="text-body mr-3" href="{{ route('About') }}">About</a>
-                    <a class="text-body mr-3" href="{{ route('contacts') }}">Contact</a>
                     <a class="text-body mr-3" href="{{ route('faq') }}">FAQs</a>
-                    <a class="text-body mr-3" href="{{ route('homejoki') }}">User</a>
+                    <a class="text-body mr-3" href="{{ route('homepage') }}">User</a>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
@@ -158,6 +157,7 @@
                         <th>Username</th>
                         <th>Nama Produk</th>
                         <th>Price</th>
+                        <th>Deskripsi</th>
                     </tr>
                 </thead>
                 <tbody class="align-middle">
@@ -174,6 +174,7 @@
                                 <td class="align-middle">{{ $item->buyer_username }}</td>
                                 <td class="align-middle">{{ $item->product_name }}</td>
                                 <td class="align-middle">Rp {{ number_format($item->transaksi_harga, 0, ',', '.') }}</td>
+                                <td class="align-middle">{{ $item->transaksi_deskripsi }}</td>
                             </tr>
                         @endforeach
                     @endif

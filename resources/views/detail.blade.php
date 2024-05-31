@@ -29,14 +29,16 @@
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid">
-        <div class="row bg-secondary py-1 px-xl-5">
-            <div class="col-lg-6 d-none d-lg-block">
-                <div class="d-inline-flex align-items-center h-100">
-                    <a class="text-body mr-3" href="{{ route('About') }}">About</a>
-                    <a class="text-body mr-3" href="{{ route('contacts') }}">Contact</a>
-                    <a class="text-body mr-3" href="{{ route('faq') }}">FAQs</a>
-                </div>
+    <div class="row bg-secondary py-1 px-xl-5">
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="d-inline-flex align-items-center h-100">
+                <a class="text-body mr-3" href="{{ route('About') }}">About</a>
+                <a class="text-body mr-3" href="{{ route('faq') }}">FAQs</a>
+                @if(Session::get('last_logged_in_userrole') === 'Joki')
+                    <a class="text-body mr-3" href="{{ route('MyproductSeller') }}">Seller</a>
+                @endif
             </div>
+        </div>
             <div class="col-lg-6 text-center text-lg-right">
         <div class="d-inline-flex align-items-center">
             <div class="btn-group">
@@ -94,9 +96,9 @@
                     <i class="fa fa-search"></i>
                 </button>
             </div>
-        </div>
-    </form>
-</div>
+                    </div>
+                </form>
+            </div>
             <div class="col-lg-4 col-6 text-right">
                 <p class="m-0">Customer Service</p>
                 <h5 class="m-0">+62 8123773546</h5>

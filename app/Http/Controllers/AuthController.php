@@ -46,7 +46,7 @@ class AuthController extends Controller
    
         // Storing last logged-in username in session
         Session::put('last_logged_in_username', $user->username);
-       
+        Session::put('last_logged_in_userrole', $user->user_role);
 
         // Logging logged in user ID
         //\Log::info('Logged in user ID: ' . Session::get('loggedInUserId'));
@@ -55,7 +55,7 @@ class AuthController extends Controller
         if ($user->user_role === 'Admin') {
             return redirect('/adminhome');
         } else if ($user->user_role === 'Joki') {
-            return redirect('/homejoki');
+            return redirect('/homepage');
         } else {
             return redirect('/homepage');
         }
