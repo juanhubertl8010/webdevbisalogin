@@ -47,7 +47,8 @@ Route::get('/cart', [CartController::class, 'show'])->name('cart');
 
 Route::get('/checkout', [CheckoutController::class, 'show'])->name('checkout');
 
-Route::get('/detail', [DetailController::class, 'show'])->name('detail');
+Route::get('/detail/{id_catalog}', [DetailController::class, 'show'])->name('detail');
+Route::post('/detail/{id_catalog}/add-review', [DetailController::class, 'addReview'])->name('addReview');
 
 Route::get('/shop', [ShopController::class, 'show'])->name('shop');
 
