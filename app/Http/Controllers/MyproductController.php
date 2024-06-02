@@ -28,7 +28,6 @@ class MyproductController extends Controller
 {
     // Ambil ID wishlist dari request
     $ID_catalog = $request->ID_catalog;
-    dd($ID_catalog);
     // Periksa apakah item wishlist yang ingin dihapus dimiliki oleh pengguna yang sedang login
     $catalog = Catalog::where('ID_catalog', $ID_catalog)->first();
     $updated = Catalog::where('ID_catalog', $ID_catalog)

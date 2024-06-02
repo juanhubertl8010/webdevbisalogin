@@ -192,10 +192,17 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{ route('homepage') }}" class="nav-item nav-link active">Home</a>
                             <a href="{{ route('shop') }}" class="nav-item nav-link">Shop</a>
-                            <a href="{{ route('cart') }}" class="nav-item nav-link">Shopping Cart</a>
-                            <a href="{{ route('wishlist') }}" class="nav-item nav-link">Wishlist</a>
-                            <a href="{{ route('checkout') }}" class="nav-item nav-link">Checkout</a>
-                            <a href="{{ route('contacts') }}" class="nav-item nav-link">My Transaction</a>
+                            @if(Session::get('last_logged_in_username') === null)
+                            <a href="{{ route('login') }}" class="nav-item nav-link">Shopping Cart</a>
+                            <a href="{{ route('login') }}" class="nav-item nav-link">Wishlist</a>
+                            <a href="{{ route('login') }}" class="nav-item nav-link">Checkout</a>
+                            <a href="{{ route('login') }}" class="nav-item nav-link">My Transaction</a>
+@else
+<a href="{{ route('cart') }}" class="nav-item nav-link">Shopping Cart</a>
+<a href="{{ route('wishlist') }}" class="nav-item nav-link  ">Wishlist</a>
+<a href="{{ route('checkout') }}" class="nav-item nav-link">Checkout</a>
+<a href="{{ route('contacts') }}" class="nav-item nav-link">My Transaction</a>
+@endif
                         </div>
                     </div>
                 </nav>

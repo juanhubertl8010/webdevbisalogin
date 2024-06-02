@@ -191,7 +191,7 @@
                             <a href="{{ route('homepage') }}" class="nav-item nav-link">Home</a>
                             <a href="{{ route('shop') }}" class="nav-item nav-link">Shop</a>
                             <a href="{{ route('cart') }}" class="nav-item nav-link">Shopping Cart</a>
-                            <a href="{{ route('wishlist') }}" class="nav-item nav-link  active">Wishlist</a>
+                            <a href="{{ route('wishlist') }}" class="nav-item nav-link  ">Wishlist</a>
                             <a href="{{ route('checkout') }}" class="nav-item nav-link">Checkout</a>
                             <!-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
