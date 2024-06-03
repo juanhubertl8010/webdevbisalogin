@@ -10,7 +10,7 @@ class AlluserController extends Controller
     {
         $userItems = User::where('statusdel', false)
         ->select('ID_user', 'username', 'user_role', 'email')
-        ->get();
+        ->simplePaginate(10);
 
 
         return view('AllUser', compact('userItems'));

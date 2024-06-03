@@ -16,7 +16,7 @@ class AllcartController extends Controller
             })
             ->join('user', 'user.ID_user', '=', 'keranjang.ID_User')
             ->select('keranjang.ID_keranjang', 'user.username', 'catalog.product_name', 'catalog.harga')
-            ->get();
+            ->simplePaginate(10);
     
         
             return view('Allcart', compact('cartItems'));

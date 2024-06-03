@@ -250,6 +250,10 @@
     </div>
 </div>
     </div>
+    <div class="pagination justify-content-center">
+    {{ $transaksiItems->links() }}
+</div>
+
     <!-- Contact End -->
 
 

@@ -20,7 +20,7 @@ class AllTransController extends Controller
         })
         ->join('user', 'user.ID_user', '=', 'transaksi.ID_User')
         ->select('transaksi.ID_transaksi', 'user.username', 'catalog.product_name', 'catalog.harga')
-        ->get();
+        ->simplePaginate(10);
         
         return view('AllTrans', compact('transItems'));
         } 

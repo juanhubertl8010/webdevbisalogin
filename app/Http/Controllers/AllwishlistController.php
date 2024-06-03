@@ -17,7 +17,7 @@ class AllwishlistController extends Controller
             })
             ->join('user', 'user.ID_user', '=', 'wishlist.ID_User')
             ->select('wishlist.ID_wishlist', 'user.username', 'catalog.product_name', 'catalog.harga')
-            ->get();
+            ->simplePaginate(10);
     
         
             return view('Allwishlist', compact('wishlistItems'));

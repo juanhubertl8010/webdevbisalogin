@@ -20,7 +20,7 @@ class ContactController extends Controller
             })
             ->select('transaksi.ID_transaksi', 'transaksi.deskripsi','catalog.product_name', 'catalog.harga', 'catalog.imgproduct')
             ->distinct('transaksi.ID_catalog')
-            ->get();
+            ->simplePaginate(5);
         
         // Mengembalikan view wishlist beserta wishlist items
         return view('Transuser', compact('transaksiItems'));

@@ -18,7 +18,7 @@ class MyOrderController extends Controller
             ->join('catalog', 'transaksi.ID_catalog', '=', 'catalog.ID_catalog')
             ->join('user', 'transaksi.ID_user', '=', 'user.ID_user')
             ->select('catalog.*', 'user.username as buyer_username', 'transaksi.harga as transaksi_harga','transaksi.deskripsi as transaksi_deskripsi')
-            ->get();
+            ->simplePaginate(5);
         
         return view('myorder', compact('catalogItems'));
     }
