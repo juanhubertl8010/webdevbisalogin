@@ -208,41 +208,57 @@
     </div>
     <div class="container-fluid">
     <div class="container-fluid">
-    <div class="row px-xl-5 justify-content-center">
-        <div class="col-lg-8 table-responsive mb-5">
-            <table class="table table-light table-borderless table-hover text-center mb-0">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID_Keranjang</th>
-                        <th>Username</th>
-                        <th>Nama product</th>
-                        <th>Harga</th>
-                    </tr>
-                </thead>
-                <tbody class="align-middle">
-                @forelse($cartItems as $item)
-                @if($item->statusdel == false)
-        <tr>
-            <td class="align-middle"> {{ $item->ID_keranjang }}</td>
-            <td class="align-middle"> {{ $item->username }}</td>
-            <td class="align-middle"> {{ $item->product_name }}</td>
-            <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
-        </tr>
-   
-        </tr>
-    @endif
-@empty
-    <tr>
-        <td colspan="3">No items in Wishlist</td>
-    </tr>
-@endforelse
-                </tbody>
-            </table>
+        <div class="row px-xl-5 justify-content-center mb-3">
+            <div class="col-lg-8">
+                <form action="{{ url('allcart') }}" method="GET">
+                    <div class="form-group">
+                        <label for="gameFilter">Filter by Game:</label>
+                        <select name="game" id="gameFilter" class="form-control" onchange="this.form.submit()">
+                            <option value="">All Games</option>
+                            @foreach($games as $game)
+                                <option value="{{ $game->ID_game }}" {{ $selectedGame == $game->ID_game ? 'selected' : '' }}>
+                                    {{ $game->game_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row px-xl-5 justify-content-center">
+            <div class="col-lg-8 table-responsive mb-5">
+                <table class="table table-light table-borderless table-hover text-center mb-0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID_Keranjang</th>
+                            <th>Username</th>
+                            <th>Nama product</th>
+                            <th>Harga</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        @forelse($cartItems as $item)
+                            @if($item->statusdel == false)
+                                <tr>
+                                    <td class="align-middle">{{ $item->ID_keranjang }}</td>
+                                    <td class="align-middle">{{ $item->username }}</td>
+                                    <td class="align-middle">{{ $item->product_name }}</td>
+                                    <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
+                                </tr>
+                            @endif
+                        @empty
+                            <tr>
+                                <td colspan="4">No items in Wishlist</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-<div class="pagination justify-content-center">
-    {{ $cartItems->links() }}
+    <div class="pagination justify-content-center">
+        {{ $cartItems->links() }}
+    </div>
 </div>
 <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
         <div class="row px-xl-5 pt-5">
