@@ -74,6 +74,7 @@ Route::get('/wishlist', [WishlistController::class, 'show'])->name('wishlist');
     // web.php
     Route::post('/logout', function () {
         Auth::logout();
+        Session::flush();
         \Log::info('User logged out'); // Tambahkan log ini
         return redirect('/usrlogin');
     })->name('logout');

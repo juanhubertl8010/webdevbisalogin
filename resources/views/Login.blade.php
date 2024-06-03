@@ -169,25 +169,24 @@
         </div>
 
         <div class="login">
-            <form action="{{ url('/usrlogin/login') }}" method="POST">
-                {{ csrf_field() }}
-                <label for="chk" aria-hidden="true">Login</label>
-                @if($errors->has('error'))
-                    <div class="error-message">{{ $errors->first('error') }}</div>
-                @endif
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="pswd" placeholder="Password" required>
-                <div class="forgot-password">
-                    <a href="{{ route('forgotpass') }}">Forgot Password?</a>
-                </div>
-                <div class="input-group">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember Me</label>
-                </div>
-                <button type="submit">Login</button>
-            </form>
+    <form action="{{ url('/usrlogin/login') }}" method="POST">
+        {{ csrf_field() }}
+        <label for="chk" aria-hidden="true">Login</label>
+        @if($errors->has('error'))
+            <div class="error-message">{{ $errors->first('error') }}</div>
+        @endif
+        <input type="text" name="username" placeholder="Username" required value="{{ Cookie::get('remembered_username') }}">
+        <input type="password" name="pswd" placeholder="Password" required>
+        <div class="forgot-password">
+            <a href="{{ route('forgotpass') }}">Forgot Password?</a>
         </div>
-    </div>
+        <div class="input-group">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Remember Me</label>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</div>
 
     <script>
         function redirectToHomepage(event) {
