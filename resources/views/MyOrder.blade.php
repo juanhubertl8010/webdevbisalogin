@@ -182,12 +182,13 @@
                         <th>Nama Produk</th>
                         <th>Price</th>
                         <th>Deskripsi</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody class="align-middle">
                     @if($catalogItems->isEmpty())
                         <tr>
-                            <td colspan="4" class="align-middle">No orders</td>
+                            <td colspan="6" class="align-middle">No orders</td>
                         </tr>
                     @else
                         @foreach($catalogItems as $item)
@@ -199,6 +200,17 @@
                                 <td class="align-middle">{{ $item->product_name }}</td>
                                 <td class="align-middle">Rp {{ number_format($item->transaksi_harga, 0, ',', '.') }}</td>
                                 <td class="align-middle">{{ $item->transaksi_deskripsi }}</td>
+                                <td class="align-middle">
+                                    @if($item->statustrans == 'F')
+                                        <form action="{{ route('updateStatus', $item->ID_transaksi) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-success">Selesai</button>
+                                        </form>
+                                    @else
+                                        Sudah Selesai
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     @endif

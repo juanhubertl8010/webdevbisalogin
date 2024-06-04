@@ -238,43 +238,47 @@
     <!-- Contact Start -->
     <div class="container-fluid">
     <div class="container-fluid">
-    <div class="row px-xl-5 justify-content-center">
-        <div class="col-lg-8 table-responsive mb-5">
-            <table class="table table-light table-borderless table-hover text-center mb-0">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>IMG</th>
-                        <th>Nama produk </th>
-                        <th>Price</th>
-                        <th>Deskripsi</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody class="align-middle">
-                @forelse($transaksiItems as $item)
-    @if($item->statusdel == false)
-        <tr>
-            <td class="align-middle">
-                <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;"> 
-            </td>
-            <td class="align-middle"> {{ $item->product_name }}</td>
-            <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
-            <td class="align-middle"> {{ $item->deskripsi }}</td>
-            <td class="align-middle">Payment Successful</td>
-        </tr>
-    @endif
-@empty
-    <tr>
-        <td colspan="3">No items in Transaction</td>
-    </tr>
-@endforelse
-                </tbody>
-            </table>
+        <div class="row px-xl-5 justify-content-center">
+            <div class="col-lg-8 table-responsive mb-5">
+                <table class="table table-light table-borderless table-hover text-center mb-0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>IMG</th>
+                            <th>Nama produk </th>
+                            <th>Price</th>
+                            <th>Deskripsi</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                    @forelse($transaksiItems as $item)
+                            <tr>
+                                <td class="align-middle">
+                                    <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;"> 
+                                </td>
+                                <td class="align-middle"> {{ $item->product_name }}</td>
+                                <td class="align-middle">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
+                                <td class="align-middle"> {{ $item->deskripsi }}</td>
+                                <td class="align-middle">
+                                    @if($item->statustrans == 'F')
+                                        Belum Diproses
+                                    @else
+                                        Sudah Selesai
+                                    @endif
+                                </td>
+                            </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5">No items in Transaction</td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
-    </div>
-    <div class="pagination justify-content-center">
+<div class="pagination justify-content-center">
     {{ $transaksiItems->links() }}
 </div>
 

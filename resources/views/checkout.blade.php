@@ -304,31 +304,44 @@
 <script>
     // Ketika tombol "Payment" ditekan
     document.getElementById('checkout-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Mencegah formulir dikirim secara default
+    event.preventDefault(); // Mencegah formulir dikirim secara default
 
-        // Mengumpulkan semua ID transaksi yang dipilih
-        var selectedCheckboxes = document.querySelectorAll('input.product-checkbox:checked');
-        var selectedIds = [];
-        selectedCheckboxes.forEach(function(checkbox) {
-            selectedIds.push(checkbox.dataset.id);
-        });
+    // Mengumpulkan semua ID transaksi yang dipilih
+    var selectedCheckboxes = document.querySelectorAll('input.product-checkbox:checked');
+    var selectedIds = [];
+    var notes = {}; // Objek untuk menyimpan catatan
 
-        // Mengumpulkan semua notes untuk transaksi yang dipilih
-        var notes = {};
-        selectedCheckboxes.forEach(function(checkbox) {
-            var noteInput = document.querySelector('input.note-input[data-id="' + checkbox.dataset.id + '"]');
-            notes[checkbox.dataset.id] = noteInput.value;
-        });
+    // Memeriksa jika setiap catatan diisi
+    var isNotesFilled = true;
+    selectedCheckboxes.forEach(function(checkbox) {
+        var noteInput = document.querySelector('input.note-input[data-id="' + checkbox.dataset.id + '"]');
+        var note = noteInput.value.trim(); // Menghapus spasi ekstra
 
-        // Menetapkan nilai ke input tersembunyi
-        document.getElementById('item-ids').value = selectedIds.join(',');
+        // Memeriksa jika catatan tidak kosong
+        if (note === '') {
+            isNotesFilled = false;
+        }
 
-        // Menetapkan nilai notes ke input tersembunyi
-        document.getElementById('item-notes').value = JSON.stringify(notes);
-
-        // Mengirim formulir
-        this.submit();
+        // Menambahkan ID transaksi dan catatan ke objek notes
+        notes[checkbox.dataset.id] = note;
+        selectedIds.push(checkbox.dataset.id);
     });
+
+    // Jika ada catatan yang kosong, tampilkan pesan kesalahan dan hentikan proses pembayaran
+    if (!isNotesFilled) {
+        alert("Please fill in all notes for selected transactions.");
+        return;
+    }
+
+    // Menetapkan nilai ke input tersembunyi
+    document.getElementById('item-ids').value = selectedIds.join(',');
+
+    // Menetapkan nilai notes ke input tersembunyi
+    document.getElementById('item-notes').value = JSON.stringify(notes);
+
+    // Mengirim formulir
+    this.submit();
+});
 
     document.addEventListener('DOMContentLoaded', function() {
     // Update total when checkbox is clicked
