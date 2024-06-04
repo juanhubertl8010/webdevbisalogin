@@ -246,6 +246,7 @@
             <table class="table table-light table-borderless table-hover text-center mb-0">
                 <thead class="thead-dark">
                     <tr>
+                        <th>Select</th>
                         <th>IMG</th>
                         <th>Nama produk</th>
                         <th>Price</th>
@@ -259,10 +260,12 @@
                     @forelse($transaksiItems as $item)
                         @if($item->statusdel == false && !in_array($item->product_name, $uniqueProducts))
                             @php
-                                // Tambahkan nama produk ke dalam array uniqueProducts
                                 $uniqueProducts[] = $item->product_name;
                             @endphp
                             <tr>
+                                <td class="align-middle">
+                                    <input type="checkbox" class="product-checkbox" data-id="{{ $item->ID_transaksi }}" data-price="{{ $item->harga }}">
+                                </td>
                                 <td class="align-middle" data-id="{{ $item->ID_transaksi }}" data-price="{{ $item->harga }}">
                                     <img src="{{ asset('img/' . $item->imgproduct) }}" alt="" style="width: 50px;"> 
                                 </td>
@@ -275,7 +278,7 @@
                         @endif
                     @empty
                         <tr>
-                            <td colspan="4">No items in Checkout</td>
+                            <td colspan="5">No items in Checkout</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -304,18 +307,17 @@
         event.preventDefault(); // Mencegah formulir dikirim secara default
 
         // Mengumpulkan semua ID transaksi yang dipilih
-        var itemElements = document.querySelectorAll('td[data-id]');
+        var selectedCheckboxes = document.querySelectorAll('input.product-checkbox:checked');
         var selectedIds = [];
-        itemElements.forEach(function(item) {
-            selectedIds.push(item.dataset.id);
+        selectedCheckboxes.forEach(function(checkbox) {
+            selectedIds.push(checkbox.dataset.id);
         });
 
-        // Mengumpulkan semua notes
-        var noteElements = document.querySelectorAll('input.note-input');
+        // Mengumpulkan semua notes untuk transaksi yang dipilih
         var notes = {};
-        noteElements.forEach(function(note) {
-            var id = note.dataset.id;
-            notes[id] = note.value;
+        selectedCheckboxes.forEach(function(checkbox) {
+            var noteInput = document.querySelector('input.note-input[data-id="' + checkbox.dataset.id + '"]');
+            notes[checkbox.dataset.id] = noteInput.value;
         });
 
         // Menetapkan nilai ke input tersembunyi
@@ -327,30 +329,26 @@
         // Mengirim formulir
         this.submit();
     });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get all elements with the 'data-price' attribute
-        var items = document.querySelectorAll('[data-price]');
 
-        // Initialize total price
+    document.addEventListener('DOMContentLoaded', function() {
+    // Update total when checkbox is clicked
+    var checkboxes = document.querySelectorAll('.product-checkbox');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', updateTotal);
+    });
+
+    function updateTotal() {
+        var selectedCheckboxes = document.querySelectorAll('.product-checkbox:checked');
         var totalPrice = 0;
 
-        // Loop through each item
-        items.forEach(function(item) {
-            // Get the price from data-price attribute
-            var price = parseFloat(item.getAttribute('data-price'));
-            
-            // Add the price to the total
+        selectedCheckboxes.forEach(function(checkbox) {
+            var price = parseFloat(checkbox.dataset.price);
             totalPrice += price;
         });
 
-        // Set the total price in the summary
         document.getElementById('summary-total').textContent = 'Rp ' + totalPrice.toLocaleString();
-
-        // Optional: If you want to format the total price with commas
-        // document.getElementById('summary-total').textContent = 'Rp ' + totalPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-    });
+    }
+});
 </script>
     <!-- Checkout End -->
 
