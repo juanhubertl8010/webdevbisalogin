@@ -9,19 +9,24 @@ use App\Models\Review;
 class DetailController extends Controller
 {
     public function show($id_catalog)
-{
-    $product = Catalog::where('ID_catalog', $id_catalog)->first();
-    $reviews = Review::where('ID_catalog', $id_catalog)->with('user')->get();
+    {
+        $product = Catalog::where('ID_catalog', $id_catalog)->first();
+        $reviews = Review::where('ID_catalog', $id_catalog)->with('user')->get();
+        $averageRating = $reviews->avg('rating');
 
-    // Calculate the average rating
-    $averageRating = $reviews->avg('rating');
+        // Check if the logged-in user has reviewed the product
+        $loggedInUserId = Session::get('loggedInUserId');
+        $userHasReviewed = false;
+        if ($loggedInUserId) {
+            $userHasReviewed = $reviews->where('ID_user', $loggedInUserId)->isNotEmpty();
+        }
 
-    if ($product) {
-        return view('detail', compact('product', 'reviews', 'averageRating'));
-    } else {
-        abort(404);
+        if ($product) {
+            return view('detail', compact('product', 'reviews', 'averageRating', 'userHasReviewed'));
+        } else {
+            abort(404);
+        }
     }
-}
 
     public function add(Request $request)
     {
