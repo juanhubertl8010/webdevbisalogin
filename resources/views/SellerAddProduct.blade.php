@@ -165,7 +165,7 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
                     <div class="navbar-nav d-flex justify-content-center w-100 py-0">
                         <a href="{{ route('MyproductSeller') }}" class="nav-item nav-link active">My Product</a>
-                        <a href="" class="nav-item nav-link">My Order</a>
+                        <a href="{{ route('myorder') }}" class="nav-item nav-link">My Order</a>
                     </div>
                 </div>
             </nav>
