@@ -9,16 +9,19 @@ use App\Models\Review;
 class DetailController extends Controller
 {
     public function show($id_catalog)
-    {
-        $product = Catalog::where('ID_catalog', $id_catalog)->first();
-        $reviews = Review::where('ID_catalog', $id_catalog)->with('user')->get();
+{
+    $product = Catalog::where('ID_catalog', $id_catalog)->first();
+    $reviews = Review::where('ID_catalog', $id_catalog)->with('user')->get();
 
-        if ($product) {
-            return view('detail', compact('product', 'reviews'));
-        } else {
-            abort(404);
-        }
+    // Calculate the average rating
+    $averageRating = $reviews->avg('rating');
+
+    if ($product) {
+        return view('detail', compact('product', 'reviews', 'averageRating'));
+    } else {
+        abort(404);
     }
+}
 
     public function add(Request $request)
     {

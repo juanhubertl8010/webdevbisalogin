@@ -296,6 +296,21 @@
         <div class="bg-light p-30">
             <div class="nav nav-tabs mb-4">
                 <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Reviews</a>
+                <!-- Display the average rating -->
+                @if ($averageRating)
+                    <div class="text-primary ml-2 mt-2">
+                        @for ($i = 1; $i <= 5; $i++)
+                            @if ($i <= $averageRating)
+                                <i class="fas fa-star"></i>
+                            @elseif ($i <= ceil($averageRating))
+                                <i class="fas fa-star-half-alt"></i>
+                            @else
+                                <i class="far fa-star"></i>
+                            @endif
+                        @endfor
+                        <span class="ml-2">({{ number_format($averageRating, 1) }} / 5)</span>
+                    </div>
+                @endif
             </div>
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="tab-pane-3">
